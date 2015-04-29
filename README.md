@@ -1,4 +1,4 @@
-## Sunfounder Smart Video Car Kit for RaspberryPi
+## Sunfounder Smart Video Car Kit for Raspberry Pi
 
 website:
 	www.sunfounder.com

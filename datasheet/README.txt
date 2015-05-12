@@ -1,1 +1,1 @@
-This directory contain some datasheet those are used to the project.
+This directory contain some datasheets those are used to the project.

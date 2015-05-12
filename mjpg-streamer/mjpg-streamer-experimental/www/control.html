@@ -1,0 +1,32 @@
+<html style="overflow-y: auto;">
+	<head>
+		<link type="text/css" href="jquery.ui.custom.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.rotate.js"></script>
+		<script type="text/javascript" src="jquery.ui.core.min.js"></script>    
+		<script type="text/javascript" src="jquery.ui.widget.min.js"></script>    
+		<script type="text/javascript" src="jquery.ui.tabs.min.js"></script>
+		<script type="text/javascript" src="JQuerySpinBtn.js"></script>    
+		<script type="text/javascript" src="functions.js"></script>  
+
+		<script type="text/javascript">
+			$(function() {
+				$("#tabs").tabs();
+			});
+
+			$(document).ready(function() {
+				//top.resizeTo($(window).width(), $(document).height() + (top.outerHeight - $(window).height()));
+			});
+		</script>
+	</head>
+	<body style="overflow-y: auto;">
+		<script type="text/javascript"> 
+			fillTabs();
+		</script>
+      
+		<div id="tabs">
+			<ul id="ul_tabs"></ul>
+		</div>
+	</body>
+</html>

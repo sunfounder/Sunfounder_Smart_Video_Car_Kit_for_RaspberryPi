@@ -1,0 +1,6 @@
+plugins/input.h
+plugins/output.h
+mjpg_streamer.c
+mjpg_streamer.h
+utils.c
+utils.h

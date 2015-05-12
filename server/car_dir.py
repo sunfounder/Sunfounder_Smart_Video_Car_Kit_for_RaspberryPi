@@ -35,14 +35,3 @@ def test():
 if __name__ == '__main__':
 	test()
 
-
-
-'''if __name__ == '__main__':
-	while True:
-		turn_left()
-		time.sleep(1)
-		home()
-		time.sleep(1)
-		turn_right()
-		time.sleep(1)
-'''

@@ -19,6 +19,7 @@ tcpSerSock.listen(5)     # The parameter of listen() defines the number of conne
                          # connections are full, others will be rejected. 
 
 motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
+video_dir.home_x_y()
 
 while True:
 	print 'Waiting for connection...'

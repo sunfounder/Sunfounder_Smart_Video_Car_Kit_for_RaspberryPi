@@ -2,11 +2,13 @@
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                  # Import necessary modules
 
-MinPluse  = 150
-MaxPluse  = 600
+MinPluse  = 200
+MaxPluse  = 700
 
-Current_x = 375
-Current_y = 375
+home_x = 450
+home_y = 450
+Current_x = 0
+Current_y = 0
 
 pwm = servo.init()           # Initialize the servo controller. 
 
@@ -57,8 +59,8 @@ def move_decrease_y():
 def home_x_y():
 	global Current_y
 	global Current_x
-	Current_y = 375
-	Current_x = 375
+	Current_y = home_x
+	Current_x = home_y
 	pwm.setPWM(14, 0, Current_x)
 	pwm.setPWM(15, 0, Current_y)
 

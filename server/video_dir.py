@@ -14,7 +14,7 @@ pwm = servo.init()           # Initialize the servo controller.
 # Control the servo connected to channel 14 of the servo control board to make the camera 
 # turning towards the positive direction of the x axis.
 # ==========================================================================================
-def move_increase_x():
+def move_decrease_x():
 	global Current_x
 	Current_x += 25
 	if Current_x > MaxPluse:
@@ -24,7 +24,7 @@ def move_increase_x():
 # Control the servo connected to channel 14 of the servo control board to make the camera 
 # turning towards the negative direction of the x axis.
 # ==========================================================================================
-def move_decrease_x():
+def move_increase_x():
 	global Current_x
 	Current_x -= 25
 	if Current_x <= MinPluse:
@@ -55,8 +55,10 @@ def move_decrease_y():
 # move forward.
 # ==========================================================================================
 def home_x_y():
-	pwm.setPWM(14, 0, 375)
-	pwm.setPWM(15, 0, 375)
+	Current_y = 375
+	Current_x = 375
+	pwm.setPWM(14, 0, Current_x)
+	pwm.setPWM(15, 0, Current_y)
 
 def test():
 	while True:

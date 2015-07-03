@@ -16,44 +16,40 @@ pwm = servo.init()           # Initialize the servo controller.
 # ==========================================================================================
 def move_increase_x():
 	global Current_x
-	pwm.setPWM(14, 0, Current_x)   # CH14 <---> X axis
 	Current_x += 25
 	if Current_x > MaxPluse:
 		Current_x = MaxPluse
-
+        pwm.setPWM(14, 0, Current_x)   # CH14 <---> X axis
 # ==========================================================================================
 # Control the servo connected to channel 14 of the servo control board to make the camera 
 # turning towards the negative direction of the x axis.
 # ==========================================================================================
 def move_decrease_x():
 	global Current_x
-	pwm.setPWM(14, 0, Current_x)
 	Current_x -= 25
 	if Current_x <= MinPluse:
 		Current_x = MinPluse
-
+        pwm.setPWM(14, 0, Current_x)
 # ==========================================================================================
 # Control the servo connected to channel 15 of the servo control board to make the camera 
 # turning towards the positive direction of the y axis. 
 # ==========================================================================================
 def move_increase_y():
 	global Current_y
-	pwm.setPWM(15, 0, Current_y)   # CH15 <---> Y axis
 	Current_y += 25
 	if Current_y > MaxPluse:
 		Current_y = MaxPluse
-
+        pwm.setPWM(15, 0, Current_y)   # CH15 <---> Y axis
 # ==========================================================================================
 # Control the servo connected to channel 15 of the servo control board to make the camera 
 # turning towards the negative direction of the y axis. 
 # ==========================================================================================		
 def move_decrease_y():
 	global Current_y
-	pwm.setPWM(15, 0, Current_y)
 	Current_y -= 25
 	if Current_y <= MinPluse:
 		Current_y = MinPluse
-
+        pwm.setPWM(15, 0, Current_y)
 # ==========================================================================================		
 # Control the servos connected with channel 14 and 15 at the same time to make the camera 
 # move forward.

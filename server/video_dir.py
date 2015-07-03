@@ -55,6 +55,8 @@ def move_decrease_y():
 # move forward.
 # ==========================================================================================
 def home_x_y():
+	global Current_y
+	global Current_x
 	Current_y = 375
 	Current_x = 375
 	pwm.setPWM(14, 0, Current_x)

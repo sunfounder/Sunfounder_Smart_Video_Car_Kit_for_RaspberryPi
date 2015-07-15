@@ -33,8 +33,25 @@ def setSpeed(speed):
 	p.setPWM(EN_M1, 0, speed)
 
 def setup():
+	global forward0, forward1, backward1, backward0
 	GPIO.setwarnings(False)
 	GPIO.setmode(GPIO.BOARD)        # Number GPIOs by its physical location
+	for line in open("config"):
+		print line[0:8]
+		if line[0:8] == "forward0":
+			forward0 = line[11:-2]
+		if line[0:8] == "forward1":
+			forward1 = line[11:-2]
+	if forward0 == 'True':
+		backward0 = 'False'
+	elif forward0 == 'False':
+		backward0 = 'True'
+	if forward1 == 'True':
+		backward1 = 'False'
+	elif forward1 == 'False':
+		backward1 = 'True'
+	print "forward0 = ", forward0
+	print "forward1 = ", forward1
 	for pin in pins:
 		GPIO.setup(pin, GPIO.OUT)   # Set all pins' mode as output
 
@@ -42,21 +59,32 @@ def setup():
 # Control the DC motor to make it rotate clockwise, so the car will 
 # move forward.
 # ===========================================================================
-def forward():
-	GPIO.output(Motor0_A, GPIO.LOW)
-	GPIO.output(Motor0_B, GPIO.HIGH)
-	GPIO.output(Motor1_A, GPIO.LOW)
-	GPIO.output(Motor1_B, GPIO.HIGH)
 
-# ===========================================================================
-# Control the DC motor to make it rotate counterclockwise, so the car will 
-# move backward.
-# ===========================================================================
+def motor0(x):
+	if x == 'True':
+		GPIO.output(Motor0_A, GPIO.LOW)
+		GPIO.output(Motor0_B, GPIO.HIGH)
+	elif x == 'False':
+		GPIO.output(Motor0_A, GPIO.HIGH)
+		GPIO.output(Motor0_B, GPIO.LOW)
+	else:
+		print 'Config Error'
+
+def motor1(x):
+	if x == 'True':
+		GPIO.output(Motor1_A, GPIO.LOW)
+		GPIO.output(Motor1_B, GPIO.HIGH)
+	elif x == 'False':
+		GPIO.output(Motor1_A, GPIO.HIGH)
+		GPIO.output(Motor1_B, GPIO.LOW)
+
+def forward():
+	motor0(forward0)
+	motor1(forward1)
+
 def backward():
-	GPIO.output(Motor0_A, GPIO.HIGH)
-	GPIO.output(Motor0_B, GPIO.LOW)
-	GPIO.output(Motor1_A, GPIO.HIGH)
-	GPIO.output(Motor1_B, GPIO.LOW)
+	motor0(backward0)
+	motor1(backward1)
 
 def stop():
 	for pin in pins:
@@ -92,4 +120,8 @@ def test():
 		ctrl(0)
 
 if __name__ == '__main__':
-	test()
+	setup()
+	setSpeed(50)
+	#forward()
+	#backward()
+	stop()

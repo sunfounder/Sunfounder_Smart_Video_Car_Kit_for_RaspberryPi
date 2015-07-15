@@ -6,8 +6,6 @@ import motor
 from socket import *
 from time import ctime          # Import necessary modules   
 
-ctrl_cmd = ['forward', 'backward', 'left', 'right', 'stop', 'read cpu_temp', 'home', 'distance', 'x+', 'x-', 'y+', 'y-', 'xy_home']
-
 HOST = ''           # The variable of HOST is null, so the function bind( ) can be bound to all valid addresses.
 PORT = 21567
 BUFSIZ = 1024       # Size of the buffer
@@ -21,11 +19,8 @@ tcpSerSock.listen(5)     # The parameter of listen() defines the number of conne
 video_dir.setup()
 car_dir.setup()
 motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
-#video_dir.home_x_y()
-#car_dir.home()
-
-for line in open('config'):
-	
+video_dir.home_x_y()
+car_dir.home()
 
 while True:
 	print 'Waiting for connection...'
@@ -40,8 +35,8 @@ while True:
 		# Analyze the command received and control the car accordingly.
 		if not data:
 			break
-		if data == 'motor_test':
-			print 'motor moving forward'
+		if data == ctrl_cmd[0]:
+			print 'recv forward cmd'
 			motor.ctrl(1, 1)
 		elif data == ctrl_cmd[1]:
 			print 'recv backward cmd'

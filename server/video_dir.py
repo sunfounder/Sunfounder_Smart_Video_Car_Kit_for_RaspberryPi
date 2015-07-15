@@ -2,11 +2,13 @@
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                  # Import necessary modules
 
-MinPluse  = 200
-MaxPluse  = 700
+x_offset = 0
+y_offset = 0
+MinPulse = 200
+MaxPulse = 700 
 
-home_x = 450
-home_y = 450
+home_x = (MaxPulse - MinPulse) / 2 + x_offset
+home_y = (MaxPulse - MinPulse) / 2 + y_offset
 Current_x = 0
 Current_y = 0
 
@@ -19,8 +21,8 @@ pwm = servo.init()           # Initialize the servo controller.
 def move_decrease_x():
 	global Current_x
 	Current_x += 25
-	if Current_x > MaxPluse:
-		Current_x = MaxPluse
+	if Current_x > MaxPulse + x_offset:
+		Current_x = MaxPulse + x_offset
         pwm.setPWM(14, 0, Current_x)   # CH14 <---> X axis
 # ==========================================================================================
 # Control the servo connected to channel 14 of the servo control board to make the camera 
@@ -29,8 +31,8 @@ def move_decrease_x():
 def move_increase_x():
 	global Current_x
 	Current_x -= 25
-	if Current_x <= MinPluse:
-		Current_x = MinPluse
+	if Current_x <= MinPulse + x_offset:
+		Current_x = MinPulse + x_offset
         pwm.setPWM(14, 0, Current_x)
 # ==========================================================================================
 # Control the servo connected to channel 15 of the servo control board to make the camera 
@@ -39,8 +41,8 @@ def move_increase_x():
 def move_increase_y():
 	global Current_y
 	Current_y += 25
-	if Current_y > MaxPluse:
-		Current_y = MaxPluse
+	if Current_y > MaxPulse + y_offset:
+		Current_y = MaxPluse + y_offset
         pwm.setPWM(15, 0, Current_y)   # CH15 <---> Y axis
 # ==========================================================================================
 # Control the servo connected to channel 15 of the servo control board to make the camera 
@@ -49,8 +51,8 @@ def move_increase_y():
 def move_decrease_y():
 	global Current_y
 	Current_y -= 25
-	if Current_y <= MinPluse:
-		Current_y = MinPluse
+	if Current_y <= MinPluse + y_offset:
+		Current_y = MinPluse + y_offset
         pwm.setPWM(15, 0, Current_y)
 # ==========================================================================================		
 # Control the servos connected with channel 14 and 15 at the same time to make the camera 
@@ -78,7 +80,7 @@ def test():
 			time.sleep(0.5)
 
 if __name__ == '__main__':
-	test()
+	home_x_y()
 
 
 

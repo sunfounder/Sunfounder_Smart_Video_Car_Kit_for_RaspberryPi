@@ -16,6 +16,26 @@ tcpSerSock.bind(ADDR)    # Bind the IP address and port number of the server.
 tcpSerSock.listen(5)     # The parameter of listen() defines the number of connections permitted at one time. Once the 
                          # connections are full, others will be rejected. 
 
+for line in open('config'):
+	if line[0:8] == 'offset_x'
+		offset_x = int(line[11:-2])
+	if line[0:8] == 'offset_y':
+		offset_y = int(line[11:-2])
+	if line[0:10] == 'dir_offset':
+		offset = int(line[13:-2])
+	if line[0:8] == "forward0":
+		forward0 = line[11:-2]
+	if line[0:8] == "forward1":
+		forward1 = line[11:-2]
+if forward0 == 'True':
+	backward0 = 'False'
+elif forward0 == 'False':
+	backward0 = 'True'
+if forward1 == 'True':
+	backward1 = 'False'
+elif forward1 == 'False':
+	backward1 = 'True'
+
 video_dir.setup()
 car_dir.setup()
 motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
@@ -35,12 +55,12 @@ while True:
 		# Analyze the command received and control the car accordingly.
 		if not data:
 			break
-		if data == ctrl_cmd[0]:
-			print 'recv forward cmd'
-			motor.ctrl(1, 1)
-		elif data == ctrl_cmd[1]:
-			print 'recv backward cmd'
-			motor.ctrl(1, -1)
+		if data == 'motor_test':
+			print 'motor moving forward'
+			motor.motor0(forward0)
+		elif data == 'left_motor_reverse':
+			print 'left motor reversed'
+			
 		elif data == ctrl_cmd[2]:
 			print 'recv left cmd'
 			car_dir.turn_left()

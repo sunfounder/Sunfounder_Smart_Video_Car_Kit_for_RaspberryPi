@@ -37,7 +37,6 @@ def setup():
 	GPIO.setwarnings(False)
 	GPIO.setmode(GPIO.BOARD)        # Number GPIOs by its physical location
 	for line in open("config"):
-		print line[0:8]
 		if line[0:8] == "forward0":
 			forward0 = line[11:-2]
 		if line[0:8] == "forward1":
@@ -50,8 +49,6 @@ def setup():
 		backward1 = 'False'
 	elif forward1 == 'False':
 		backward1 = 'True'
-	print "forward0 = ", forward0
-	print "forward1 = ", forward1
 	for pin in pins:
 		GPIO.setup(pin, GPIO.OUT)   # Set all pins' mode as output
 

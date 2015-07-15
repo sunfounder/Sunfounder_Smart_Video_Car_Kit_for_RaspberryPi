@@ -11,10 +11,10 @@ def setup():
 	offset =0
 	for line in open('config'):
 		if line[0:10] == 'dir_offset':
-			offset = line[13:-2]
-	leftPWM += int(offset)
-	homePWM += int(offset)
-	rightPWM += int(offset)
+			offset = int(line[13:-2])
+	leftPWM += offset
+	homePWM += offset
+	rightPWM += offset
 	pwm = servo.init()         # Initialize the servo controller.
 
 # ==========================================================================================

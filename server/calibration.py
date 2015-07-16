@@ -88,7 +88,7 @@ def loop():
 			#----------Mount calibration---------
 			elif data[0:8] == 'offsetx=':
 				offset_x = int(data[8:])
-				print 'Mount offset x', offsetx
+				print 'Mount offset x', offset_x
 				video_dir.calibrate(offset_x, offset_y)
 			elif data[0:8] == 'offsety=':
 				offset_y = int(data[8:])

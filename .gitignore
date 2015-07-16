@@ -1,2 +1,4 @@
 *.pyc
-config
+server/config
+client/config
+

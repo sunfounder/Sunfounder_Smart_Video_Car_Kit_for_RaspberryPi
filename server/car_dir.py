@@ -2,32 +2,47 @@
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                # Import necessary modules
 
-offset = 0
-
-homepwm = 550 + offset
-leftpwm = 300 + offset
-rightpwm = 700 + offset
-
-pwm = servo.init()         # Initialize the servo controller.
+def setup():
+	global leftPWM, rightPWM, homePWM, pwm
+	leftPWM = 375
+	homePWM = 450
+	rightPWM = 575
+	offset =0
+	try:
+		for line in open('config'):
+			if line[0:8] == 'offset =':
+				offset = int(line[9:-1])
+	except:
+		print 'config error'
+	leftPWM += offset
+	homePWM += offset
+	rightPWM += offset
+	pwm = servo.init()         # Initialize the servo controller.
 
 # ==========================================================================================
 # Control the servo connected to channel 0 of the servo control board, so as to make the 
 # car turn left.
 # ==========================================================================================
 def turn_left():
-	pwm.setPWM(0, 0, leftpwm)  # CH0
+	global leftPWM
+	pwm.setPWM(0, 0, leftPWM)  # CH0
 
 # ==========================================================================================
 # Make the car turn right.
 # ==========================================================================================
 def turn_right():
-	pwm.setPWM(0, 0, rightpwm)
+	global rightPWM
+	pwm.setPWM(0, 0, rightPWM)
 
 # ==========================================================================================
 # Make the car turn back.
 # ==========================================================================================
 def home():
-	pwm.setPWM(0, 0, homepwm)
+	global homePWM
+	pwm.setPWM(0, 0, homePWM)
+
+def calibrate(x):
+	pwm.setPWM(0, 0, 450+x)
 
 def test():
 	while True:
@@ -37,7 +52,10 @@ def test():
 		time.sleep(1)
 		turn_right()
 		time.sleep(1)
+		home()
 
 if __name__ == '__main__':
-	test()
+	setup()
+	home()
+
 

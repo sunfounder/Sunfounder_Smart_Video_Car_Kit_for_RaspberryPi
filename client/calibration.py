@@ -15,16 +15,13 @@ ADDR = (HOST, PORT)
 tcpCliSock = socket(AF_INET, SOCK_STREAM)   # Create a socket
 tcpCliSock.connect(ADDR)                    # Connect with the server
 
-motorCal = Tk()
-motorCal.title('Motor Calibration')
-
-directionCal = Tk()
-directionCal.title('Direction Calibration')
-
-mountCal = Tk()
-mountCal.title('Mount Calibration')
-
 runbtn = 'Run'
+
+offset = 0
+offset_x = 0
+offset_y = 0
+forward0 = 'True'
+forward1 = 'True'
 
 # =============================================================================
 # Get original offset configuration.
@@ -32,11 +29,6 @@ runbtn = 'Run'
 
 def setup():
 	global offset_x, offset_y, offset, forward0, forward1
-	offset = 0
-	offset_x = 0
-	offset_y = 0
-	forward0 = 'True'
-	forward1 = 'True'
 	os.system('scp pi@%s:/home/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config ./' % HOST)
 	for line in open('config'):
 		if line[0:8] == 'offset_x':
@@ -66,9 +58,9 @@ def run(event):
 	if runbtn == 'Run':
 		tcpCliSock.send('motor_run')
 		runbtn = 'Stop'
-	motorCal.mainloop()
 
 def confirm(event):
+	global offset_x, offset_y, offset, forward0, forward1
 	print 'rewrite conig file'
 	config = 'offset_x = %s\noffset_y = %s\noffset = %s\nforward0 = %s\nforward1 = %s\n' % (offset_x, offset_y, offset, forward0, forward1)
 	fd = open('config', 'w')
@@ -78,6 +70,7 @@ def confirm(event):
 
 #--------motor---------------------
 def left_reverse(event):
+	global forward0
 	print 'left_reverse'
 	if forward0 == 'True':
 		forward0 = 'False'
@@ -87,6 +80,7 @@ def left_reverse(event):
 	tcpCliSock.send(left_cmd)
 
 def right_reverse(event):
+	global forward1
 	print 'right_reverse'
 	if forward1 == 'True':
 		forward1 = 'False'
@@ -98,79 +92,91 @@ def right_reverse(event):
 
 #---------turing---------------
 def fineturn_left(event):
+	global offset
 	print 'fineturn_left'
 	offset -= 1
-	cmd = 'offset%s' % offset
+	cmd = 'offset=%s' % offset
 	tcpCliSock.send(cmd)
 
 def fineturn_right(event):
+	global offset
 	print 'fineturn_right'
 	offset += 1
-	cmd = 'offset%s' % offset
+	cmd = 'offset=%s' % offset
 	tcpCliSock.send(cmd)
 
 def coarseturn_left(event):
+	global offset
 	print 'coarseturn_left'
 	offset -= 10
-	cmd = 'offset%s' % offset
+	cmd = 'offset=%s' % offset
 	tcpCliSock.send(cmd)
 
 def coarseturn_right(event):
+	global offset
 	print 'coarseturn_right'
 	offset += 10
-	cmd = 'offset%s' % offset
+	cmd = 'offset=%s' % offset
 	tcpCliSock.send(cmd)
 #------------------------------
 
 #-----------mount-----------------
 #-------------x------------------
 def finex_left(event):
+	global offset_x
 	print 'finex_left'
 	offset_x -= 1
-	cmd = 'offsetx%s' % offset_x
+	cmd = 'offsetx=%s' % offset_x
 	tcpCliSock.send(cmd)
 
 def finex_right(event):
+	global offset_x
 	print 'finex_right'
 	offset_x += 1
-	cmd = 'offsetx%s' % offset_x
+	cmd = 'offsetx=%s' % offset_x
 	tcpCliSock.send(cmd)
 
 def coarsex_left(event):
+	global offset_x
 	print 'coarsex_left'
 	offset_x -= 10
-	cmd = 'offsetx%s' % offset_x
+	cmd = 'offsetx=%s' % offset_x
 	tcpCliSock.send(cmd)
 
 def coarsex_right(event):
+	global offset_x
 	print 'coarsex_right'
 	offset_x += 10
-	cmd = 'offsetx%s' % offset_x
+	cmd = 'offsetx=%s' % offset_x
 	tcpCliSock.send(cmd)
 
 #---------y-----------------------
 def finey_down(event):
+	global offset_y
 	print 'finey_down'
 	offset_y -= 1
-	cmd = 'offsety%s' % offset_y
+	cmd = 'offsety=%s' % offset_y
 	tcpCliSock.send(cmd)
 
 def finey_up(event):
+	global offset_y
 	print 'finey_up'
 	offset_y += 1
-	cmd = 'offsety%s' % offset_y
+	cmd = 'offsety=%s' % offset_y
 	tcpCliSock.send(cmd)
 
 def coarsey_down(event):
+	global offset_y
 	print 'coarsey_down'
 	offset_y -= 10
-	cmd = 'offsety%s' % offset_y
+	cmd = 'offsety=%s' % offset_y
 	tcpCliSock.send(cmd)
 
 def coarsey_up(event):
+	global offset_y
 	print 'coarsey_up'
 	offset_y += 10
-	cmd = 'offsety%s' % offset_y
+	cmd = 'offsety=%s' % offset_y
 	tcpCliSock.send(cmd)
 #--------------------------------
 
@@ -187,7 +193,7 @@ def quit_fun(event):
 # Create buttons on motor
 # =============================================================================
 Btn0 = Button(top, width=5, text='Reverse')
-Btn1 = Button(top, width=5, text='Run')
+Btn1 = Button(top, width=5, text=runbtn)
 Btn2 = Button(top, width=5, text='Reverse')
 # =============================================================================
 # Create buttons on mount
@@ -268,11 +274,11 @@ Btn16.bind('<ButtonRelease-1>', confirm)
 
 spd = 50
 
-hori = '-----'
+hori = '-------------------'
 label0 = Label(top, text='|', fg='red')
 label1 = Label(top, text='|', fg='red')
 label2 = Label(top, text='|', fg='red')
-label3 = Label(top, text='--|  ', fg='red')
+label3 = Label(top, text='---------|         ', fg='red')
 label4 = Label(top, text='|', fg='red')
 label5 = Label(top, text='|', fg='red')
 label6 = Label(top, text='|', fg='red')
@@ -328,7 +334,7 @@ label19.grid(row=1,column=1)
 label20.grid(row=1,column=2)
 label21.grid(row=0,column=5)
 label22.grid(row=1,column=4)
-label23.grid(row=4,column=5)
+label23.grid(row=1,column=5)
 label24.grid(row=2,column=5)
 label25.grid(row=3,column=5)
 label26.grid(row=4,column=4)
@@ -341,9 +347,6 @@ label32.grid(row=6,column=1)
 
 def main():
 	top.mainloop()
-	motorCal.quit()
-	directionCal.quit()
-	mountCal.quit()
 
 if __name__ == '__main__':
 	main()

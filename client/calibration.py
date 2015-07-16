@@ -41,7 +41,7 @@ def setup():
 			forward0 = line[11:-1]
 		if line[0:8] == "forward1":
 			forward1 = line[11:-1]
-	print offset_x, offset_y, offset, forward0, forward1
+#	print offset_x, offset_y, offset, forward0, forward1
 #	tcpCliSock.send('offset=%s' % offset)
 #	tcpCliSock.send('offsetx=%s' % offset_x)
 #	tcpCliSock.send('offsety=%s' % offset_y)

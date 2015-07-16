@@ -17,7 +17,7 @@ tcpSerSock.listen(5)     # The parameter of listen() defines the number of conne
                          # connections are full, others will be rejected. 
 
 for line in open('config'):
-	if line[0:8] == 'offset_x'
+	if line[0:8] == 'offset_x':
 		offset_x = int(line[11:-2])
 	if line[0:8] == 'offset_y':
 		offset_y = int(line[11:-2])
@@ -36,9 +36,9 @@ car_dir.home()
 
 def REVERSE(x):
 	if x == 'True':
-		return = 'False'
+		return 'False'
 	elif x == 'False':
-		return = 'True'
+		return 'True'
 
 def loop():
 	while True:
@@ -57,7 +57,7 @@ def loop():
 			#--------Motor calibration----------
 			if data == 'motor_run':
 				print 'motor moving forward'
-				motor.speed(50)
+				motor.setSpeed(50)
 				motor.motor0(forward0)
 				motor.motor1(forward1)
 			elif data[0:9] == 'leftmotor':
@@ -78,11 +78,11 @@ def loop():
 			#--------------------------------
 
 			#----------Mount calibration---------
-			elif data[0:7] = 'offsetx':
+			elif data[0:7] == 'offsetx':
 				offset_x = int(date[7:])
 				print 'Mount offset x', offsetx
 				video_dir.calibration(offset_x)
-			elif data[0:7] = 'offsety':
+			elif data[0:7] == 'offsety':
 				offset_x = int(date[7:])
 				print 'Mount offset y', offset_y
 				video_dir.calibration(offset_x)

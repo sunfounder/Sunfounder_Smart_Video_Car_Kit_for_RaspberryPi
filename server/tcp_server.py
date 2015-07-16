@@ -21,11 +21,8 @@ tcpSerSock.listen(5)     # The parameter of listen() defines the number of conne
 video_dir.setup()
 car_dir.setup()
 motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
-#video_dir.home_x_y()
-#car_dir.home()
-
-for line in open('config'):
-	
+video_dir.home_x_y()
+car_dir.home()
 
 while True:
 	print 'Waiting for connection...'
@@ -40,7 +37,7 @@ while True:
 		# Analyze the command received and control the car accordingly.
 		if not data:
 			break
-		if data == 'motor_test':
+		if data == ctrl_cmd[0]:
 			print 'motor moving forward'
 			motor.ctrl(1, 1)
 		elif data == ctrl_cmd[1]:

@@ -36,6 +36,9 @@ def turn_right():
 def home():
 	pwm.setPWM(0, 0, homePWM)
 
+def calibrate(x):
+	pwm.setPWM(0, 0, homePWM+x)
+
 def test():
 	while True:
 		turn_left()

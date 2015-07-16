@@ -16,10 +16,10 @@ def setup():
 		for line in open('config'):
 			if line[0:8] == 'offset_x':
 				offset_x = int(line[11:-1])
-				print 'offset_x =', offset_x
+				#print 'offset_x =', offset_x
 			if line[0:8] == 'offset_y':
 				offset_y = int(line[11:-1])
-				print 'offset_y =', offset_y
+				#print 'offset_y =', offset_y
 	except:
 		pass
 	Xmin = MinPulse + offset_x

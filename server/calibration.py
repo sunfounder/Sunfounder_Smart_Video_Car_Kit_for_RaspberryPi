@@ -16,23 +16,30 @@ tcpSerSock.bind(ADDR)    # Bind the IP address and port number of the server.
 tcpSerSock.listen(5)     # The parameter of listen() defines the number of connections permitted at one time. Once the 
                          # connections are full, others will be rejected. 
 
-for line in open('config'):
-	if line[0:8] == 'offset_x':
-		offset_x = int(line[11:-2])
-	if line[0:8] == 'offset_y':
-		offset_y = int(line[11:-2])
-	if line[0:10] == 'dir_offset':
-		offset = int(line[13:-2])
-	if line[0:8] == "forward0":
-		forward0 = line[11:-2]
-	if line[0:8] == "forward1":
-		forward1 = line[11:-2]
+def setup():
+	global offset_x,  offset_y, offset, forward0, forward1
+	offset_x = 0
+	offset_y = 0
+	offset = 0
+	forward0 = 'True'
+	forward1 = 'False'
+	for line in open('config'):
+		if line[0:8] == 'offset_x':
+			offset_x = int(line[11:-2])
+		if line[0:8] == 'offset_y':
+			offset_y = int(line[11:-2])
+		if line[0:10] == 'dir_offset':
+			offset = int(line[13:-2])
+		if line[0:8] == "forward0":
+			forward0 = line[11:-2]
+		if line[0:8] == "forward1":
+			forward1 = line[11:-2]
 
-video_dir.setup()
-car_dir.setup()
-motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
-video_dir.home_x_y()
-car_dir.home()
+	video_dir.setup()
+	car_dir.setup()
+	motor.setup() 
+	video_dir.calibrate(offset_x, offset_y)
+	car_dir.home()
 
 def REVERSE(x):
 	if x == 'True':
@@ -41,6 +48,7 @@ def REVERSE(x):
 		return 'True'
 
 def loop():
+	global offset_x, offset_y, offset, forward0, forward1
 	while True:
 		print 'Waiting for connection...'
 		# Waiting for connection. Once receiving a connection, the function accept() returns a separate 
@@ -72,20 +80,20 @@ def loop():
 			#---------------------------------
 
 			#-------Turing calibration------
-			elif data[0:6] == 'offset':
-				offset = int(date[6:])
-				car_dir.calbrate(offset)
+			elif data[0:7] == 'offset=':
+				offset = int(data[7:])
+				car_dir.calibrate(offset)
 			#--------------------------------
 
 			#----------Mount calibration---------
-			elif data[0:7] == 'offsetx':
-				offset_x = int(date[7:])
+			elif data[0:8] == 'offsetx=':
+				offset_x = int(data[8:])
 				print 'Mount offset x', offsetx
-				video_dir.calibration(offset_x)
-			elif data[0:7] == 'offsety':
-				offset_x = int(date[7:])
+				video_dir.calibrate(offset_x, offset_y)
+			elif data[0:8] == 'offsety=':
+				offset_y = int(data[8:])
 				print 'Mount offset y', offset_y
-				video_dir.calibration(offset_x)
+				video_dir.calibrate(offset_x, offset_y)
 			#----------------------------------------
 
 			else:
@@ -93,6 +101,7 @@ def loop():
 
 if __name__ == "__main__":
 	try:
+		setup()
 		loop()
 	except KeyboardInterrupt:
 		tcpSerSock.close()

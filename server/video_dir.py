@@ -79,9 +79,9 @@ def home_x_y():
 	pwm.setPWM(14, 0, Current_x)
 	pwm.setPWM(15, 0, Current_y)
 
-def calibrate(x):
+def calibrate(x,y):
 	pwm.setPWM(14, 0, (Xmax+Xmin)/2+x)
-	pwm.setPWM(15, 0, (Ymax+Ymin)/2+x)
+	pwm.setPWM(15, 0, (Ymax+Ymin)/2+y)
 
 def test():
 	while True:

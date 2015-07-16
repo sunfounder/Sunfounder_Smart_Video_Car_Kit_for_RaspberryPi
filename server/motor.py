@@ -34,13 +34,18 @@ def setSpeed(speed):
 
 def setup():
 	global forward0, forward1, backward1, backward0
+	forward0 = 'True'
+	forward1 = 'True'
 	GPIO.setwarnings(False)
 	GPIO.setmode(GPIO.BOARD)        # Number GPIOs by its physical location
-	for line in open("config"):
-		if line[0:8] == "forward0":
-			forward0 = line[11:-2]
-		if line[0:8] == "forward1":
-			forward1 = line[11:-2]
+	try:
+		for line in open("config"):
+			if line[0:8] == "forward0":
+				forward0 = line[11:-1]
+			if line[0:8] == "forward1":
+				forward1 = line[11:-1]
+	except:
+		pass
 	if forward0 == 'True':
 		backward0 = 'False'
 	elif forward0 == 'False':

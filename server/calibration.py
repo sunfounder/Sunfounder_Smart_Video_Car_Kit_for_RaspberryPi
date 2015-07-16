@@ -23,23 +23,30 @@ def setup():
 	offset = 0
 	forward0 = 'True'
 	forward1 = 'False'
-	for line in open('config'):
-		if line[0:8] == 'offset_x':
-			offset_x = int(line[11:-2])
-		if line[0:8] == 'offset_y':
-			offset_y = int(line[11:-2])
-		if line[0:10] == 'dir_offset':
-			offset = int(line[13:-2])
-		if line[0:8] == "forward0":
-			forward0 = line[11:-2]
-		if line[0:8] == "forward1":
-			forward1 = line[11:-2]
-
+	try:
+		for line in open('config'):
+			if line[0:8] == 'offset_x':
+				offset_x = int(line[11:-1])
+				print 'offset_x =', offset_x
+			if line[0:8] == 'offset_y':
+				offset_y = int(line[11:-1])
+				print 'offset_y =', offset_y
+			if line[0:8] == 'offset =':
+				offset = int(line[9:-1])
+				print 'offset =', offset
+			if line[0:8] == "forward0":
+				forward0 = line[11:-1]
+				print 'turning0 =', forward0
+			if line[0:8] == "forward1":
+				forward1 = line[11:-1]
+				print 'turning1 =', forward1
+	except:
+		print 'no config file, set config to original'
 	video_dir.setup()
 	car_dir.setup()
 	motor.setup() 
 	video_dir.calibrate(offset_x, offset_y)
-	car_dir.home()
+	car_dir.calibrate(offset)
 
 def REVERSE(x):
 	if x == 'True':

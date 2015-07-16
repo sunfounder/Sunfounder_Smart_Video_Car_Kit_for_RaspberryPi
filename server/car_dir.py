@@ -2,16 +2,18 @@
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                # Import necessary modules
 
-leftPWM = 375
-homePWM = 450
-rightPWM = 575
-
 def setup():
 	global leftPWM, rightPWM, homePWM, pwm
+	leftPWM = 375
+	homePWM = 450
+	rightPWM = 575
 	offset =0
-	for line in open('config'):
-		if line[0:10] == 'dir_offset':
-			offset = int(line[13:-2])
+	try:
+		for line in open('config'):
+			if line[0:8] == 'offset =':
+				offset = int(line[9:-1])
+	except:
+		print 'config error'
 	leftPWM += offset
 	homePWM += offset
 	rightPWM += offset
@@ -22,22 +24,25 @@ def setup():
 # car turn left.
 # ==========================================================================================
 def turn_left():
+	global leftPWM
 	pwm.setPWM(0, 0, leftPWM)  # CH0
 
 # ==========================================================================================
 # Make the car turn right.
 # ==========================================================================================
 def turn_right():
+	global rightPWM
 	pwm.setPWM(0, 0, rightPWM)
 
 # ==========================================================================================
 # Make the car turn back.
 # ==========================================================================================
 def home():
+	global homePWM
 	pwm.setPWM(0, 0, homePWM)
 
 def calibrate(x):
-	pwm.setPWM(0, 0, homePWM+x)
+	pwm.setPWM(0, 0, 450+x)
 
 def test():
 	while True:

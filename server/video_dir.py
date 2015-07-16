@@ -2,11 +2,9 @@
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                  # Import necessary modules
 
-MinPulse  = 200
-MaxPulse  = 700
+MinPulse = 200
+MaxPulse = 700
 
-home_x = (MaxPulse + MinPulse) / 2
-home_y = MinPulse + 80
 Current_x = 0
 Current_y = 0
 
@@ -14,17 +12,22 @@ def setup():
 	global Xmin, Ymin, Xmax, Ymax, home_x, home_y, pwm
 	offset_x = 0
 	offset_y = 0
-	for line in open('config'):
-		if line[0:8] == 'offset_x':
-			offset_x = int(line[11:-2])
-		if line[0:8] == 'offset_y':
-			offset_y = int(line[11:-2])
+	try:
+		for line in open('config'):
+			if line[0:8] == 'offset_x':
+				offset_x = int(line[11:-1])
+				print 'offset_x =', offset_x
+			if line[0:8] == 'offset_y':
+				offset_y = int(line[11:-1])
+				print 'offset_y =', offset_y
+	except:
+		pass
 	Xmin = MinPulse + offset_x
 	Xmax = MaxPulse + offset_x
 	Ymin = MinPulse + offset_y
 	Ymax = MaxPulse + offset_y
-	home_x += offset_x
-	home_y += offset_y
+	home_x = (Xmax + Xmin)/2
+	home_y = Ymin + 80
 	pwm = servo.init()           # Initialize the servo controller. 
 
 # ==========================================================================================
@@ -74,14 +77,14 @@ def move_decrease_y():
 def home_x_y():
 	global Current_y
 	global Current_x
-	Current_y = home_x
-	Current_x = home_y
+	Current_y = home_y 
+	Current_x = home_x
 	pwm.setPWM(14, 0, Current_x)
 	pwm.setPWM(15, 0, Current_y)
 
 def calibrate(x,y):
-	pwm.setPWM(14, 0, (Xmax+Xmin)/2+x)
-	pwm.setPWM(15, 0, (Ymax+Ymin)/2+y)
+	pwm.setPWM(14, 0, (MaxPulse+MinPulse)/2+x)
+	pwm.setPWM(15, 0, (MaxPulse+MinPulse)/2+y)
 
 def test():
 	while True:

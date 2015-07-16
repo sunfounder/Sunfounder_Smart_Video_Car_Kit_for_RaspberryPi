@@ -66,7 +66,7 @@ def confirm(event):
 	fd = open('config', 'w')
 	fd.write(config)
 	fd.close()
-	os.system('sudo scp ./config pi@%s:/home/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/' % HOST)
+	os.system('sudo scp ./config pi@%s:/home/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server' % HOST)
 
 #--------motor---------------------
 def left_reverse(event):

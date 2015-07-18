@@ -29,7 +29,10 @@ forward1 = 'True'
 
 def setup():
 	global offset_x, offset_y, offset, forward0, forward1
-	os.system('scp pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config config' % HOST)
+	try:
+		os.system('scp pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config config' % HOST)
+	except:
+		print 'Error SCP config file'
 	for line in open('config'):
 		if line[0:8] == 'offset_x':
 			offset_x = int(line[11:-1])
@@ -76,7 +79,7 @@ def confirm(event):
 	fd.close()
 	print 'Sending...'
 	try:
-		os.system('sudo scp ./config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server' % HOST)
+		os.system('sudo scp config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config' % HOST)
 		print 'Succeed! Quiting...'
 	except:
 		print 'Something wrong happend, check your ip address, and the file location on your raspberry. Quiting...'

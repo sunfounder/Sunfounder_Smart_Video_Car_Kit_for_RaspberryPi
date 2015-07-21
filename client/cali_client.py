@@ -236,8 +236,8 @@ Btn14 = Button(top, width=5, text='==>') # Coarse right
 # =============================================================================
 # Create buttons on top
 # =============================================================================
-Btn15 = Button(top, width=5, text='cancle')	# cancle
-Btn16 = Button(top, width=5, text='confirm') # confirm
+Btn15 = Button(top, width=5, text='Cancel')	# cancle
+Btn16 = Button(top, width=5, text='Confirm') # confirm
 
 # =============================================================================
 # Buttons layout
@@ -294,14 +294,14 @@ Btn16.bind('<ButtonRelease-1>', confirm)
 
 spd = 50
 
-hori = '-------------------'
-label0 = Label(top, text='|', fg='red')
-label1 = Label(top, text='|', fg='red')
-label2 = Label(top, text='|', fg='red')
-label3 = Label(top, text='---------|         ', fg='red')
-label4 = Label(top, text='|', fg='red')
-label5 = Label(top, text='|', fg='red')
-label6 = Label(top, text='|', fg='red')
+hori = '========='
+label0 = Label(top, text='||', fg='red')
+label1 = Label(top, text='||', fg='red')
+label2 = Label(top, text='||', fg='red')
+label3 = Label(top, text='||', fg='red')
+label4 = Label(top, text='||', fg='red')
+label5 = Label(top, text='||', fg='red')
+label6 = Label(top, text='||', fg='red')
 
 label7 = Label(top, text=hori, fg='red')
 label8 = Label(top, text=hori, fg='red')
@@ -309,27 +309,27 @@ label9 = Label(top, text=hori, fg='red')
 label10 = Label(top, text=hori, fg='red')
 label11 = Label(top, text=hori, fg='red')
 label12 = Label(top, text=hori, fg='red')
-label13 = Label(top, text=hori, fg='red')
+label13 = Label(top, text='||', fg='red')
 label14 = Label(top, text=hori, fg='red')
 label15 = Label(top, text=hori, fg='red')
 label16 = Label(top, text=hori, fg='red')
 
 label17 = Label(top, text='Motor', fg='red')
 label18 = Label(top, text='Left', fg='red')
-label19 = Label(top, text='Forward', fg='red')
+#label19 = Label(top, text='Forward', fg='red')
 label20 = Label(top, text='Right', fg='red')
 label21 = Label(top, text='Mount', fg='red')
-label22 = Label(top, text='Pan', fg='red')
-label23 = Label(top, text='Front', fg='red')
-label24 = Label(top, text='Fine', fg='red')
-label25 = Label(top, text='Coarse', fg='red')
-label26 = Label(top, text='Tilt', fg='red')
-label27 = Label(top, text='Up', fg='red')
-label28 = Label(top, text='Fine', fg='red')
-label29 = Label(top, text='Coarse', fg='red')
-label30 = Label(top, text='Turing', fg='red')
-label31 = Label(top, text='Fine', fg='red')
-label32 = Label(top, text='Coarse', fg='red')
+label22 = Label(top, text='Pan:', fg='red')
+#label23 = Label(top, text='Front', fg='red')
+label24 = Label(top, text='=== Fine ===', fg='red')
+label25 = Label(top, text='== Coarse ==', fg='red')
+label26 = Label(top, text='Tilt:', fg='red')
+#label27 = Label(top, text='Up', fg='red')
+label28 = Label(top, text='=== Fine ===', fg='red')
+label29 = Label(top, text='== Coarse ==', fg='red')
+label30 = Label(top, text='Turning', fg='red')
+label31 = Label(top, text='=== Fine ===', fg='red')
+label32 = Label(top, text='== Coarse ==', fg='red')
 
 label0.grid(row=0,column=3)
 label1.grid(row=1,column=3)
@@ -350,15 +350,15 @@ label15.grid(row=7,column=5)
 label16.grid(row=7,column=6)
 label17.grid(row=0,column=1)
 label18.grid(row=1,column=0)
-label19.grid(row=1,column=1)
+#label19.grid(row=1,column=1)
 label20.grid(row=1,column=2)
 label21.grid(row=0,column=5)
 label22.grid(row=1,column=4)
-label23.grid(row=1,column=5)
+#label23.grid(row=1,column=5)
 label24.grid(row=2,column=5)
 label25.grid(row=3,column=5)
 label26.grid(row=4,column=4)
-label27.grid(row=4,column=5)
+#label27.grid(row=4,column=5)
 label28.grid(row=5,column=5)
 label29.grid(row=6,column=5)
 label30.grid(row=4,column=1)

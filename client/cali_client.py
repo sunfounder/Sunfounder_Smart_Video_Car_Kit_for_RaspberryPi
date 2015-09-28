@@ -33,18 +33,36 @@ def setup():
 		os.system('scp pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config config' % HOST)
 	except:
 		print 'Error SCP config file'
-	for line in open('config'):
-		if line[0:8] == 'offset_x':
-			offset_x = int(line[11:-1])
-		if line[0:8] == 'offset_y':
-			offset_y = int(line[11:-1])
-		if line[0:8] == 'offset =':
-			offset = int(line[9:-1])
-		if line[0:8] == "forward0":
-			forward0 = line[11:-1]
-		if line[0:8] == "forward1":
-			forward1 = line[11:-1]
-#	print offset_x, offset_y, offset, forward0, forward1
+
+	try:
+		print 'Reading from config file...',
+		for line in open('config'):
+			if line[0:8] == 'offset_x':
+				offset_x = int(line[11:-1])
+			if line[0:8] == 'offset_y':
+				offset_y = int(line[11:-1])
+			if line[0:8] == 'offset =':
+				offset = int(line[9:-1])
+			if line[0:8] == "forward0":
+				forward0 = line[11:-1]
+			if line[0:8] == "forward1":
+				forward1 = line[11:-1]
+		print 'done.'
+
+	except:
+		print 'Initializing config file...',
+		offset_x = 0
+		offset_y = 0
+		offset = 0
+		forward0 = True
+		forward1 = True
+		print 'done.'
+
+	print '\noffset_x =', offset_x
+	print 'offset_y =', offset_y
+	print 'Turning offset =', offset
+	print 'forward0 =', forward0
+	print 'forward1 =', forward1
 #	tcpCliSock.send('offset=%s' % offset)
 #	tcpCliSock.send('offsetx=%s' % offset_x)
 #	tcpCliSock.send('offsety=%s' % offset_y)

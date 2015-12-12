@@ -80,11 +80,13 @@ def motor1(x):
 		GPIO.output(Motor1_A, GPIO.HIGH)
 		GPIO.output(Motor1_B, GPIO.LOW)
 
-def forward():
+def forward(spd = 50):
+	setSpeed(spd)
 	motor0(forward0)
 	motor1(forward1)
 
-def backward():
+def backward(spd = 50):
+	setSpeed(spd)
 	motor0(backward0)
 	motor1(backward1)
 

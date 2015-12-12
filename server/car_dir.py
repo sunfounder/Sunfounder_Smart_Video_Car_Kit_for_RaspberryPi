@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import SunFounder_PiPlus as Plus
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                # Import necessary modules
 
@@ -37,6 +38,11 @@ def turn_right():
 # ==========================================================================================
 # Make the car turn back.
 # ==========================================================================================
+
+def turn(angle):
+	angle = Plus.Map(angle, 0, 255, leftPWM, rightPWM)
+	pwm.setPWM(0, 0, angle)
+
 def home():
 	global homePWM
 	pwm.setPWM(0, 0, homePWM)

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-import SunFounder_PiPlus as Plus
 import Sunfounder_PWM_Servo_Driver.Servo_init as servo
 import time                # Import necessary modules
+
+def Map(x, in_min, in_max, out_min, out_max):
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 def setup():
 	global leftPWM, rightPWM, homePWM, pwm
@@ -40,7 +42,7 @@ def turn_right():
 # ==========================================================================================
 
 def turn(angle):
-	angle = Plus.Map(angle, 0, 255, leftPWM, rightPWM)
+	angle = Map(angle, 0, 255, leftPWM, rightPWM)
 	pwm.setPWM(0, 0, angle)
 
 def home():

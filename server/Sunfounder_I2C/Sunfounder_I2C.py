@@ -23,13 +23,24 @@ class Sunfounder_I2C(object):
     # Gets the I2C bus number /dev/i2c#
     return 1 if Sunfounder_I2C.getPiRevision() > 1 else 0
 
+  @staticmethod
+  def getPiI2CBusNumber2():
+    # get I2C bus number from /dev/i2c-*
+    for file in os.listdir("/dev"):
+      if file[0:3] == "i2c":
+        print file
+        return int(file[-1])
+      else:
+        print "Can not detect I2C device. Try visit www.sunfounder.com for help."
+        print "click Ctrl C to exit."
+
   def __init__(self, address, busnum=-1, debug=False):
     self.address = address
     # By default, the correct I2C bus is auto-detected using /proc/cpuinfo
     # Alternatively, you can hard-code the bus version below:
     # self.bus = smbus.SMBus(0); # Force I2C0 (early 256MB Pi's)
     # self.bus = smbus.SMBus(1); # Force I2C1 (512MB Pi's)
-    self.bus = smbus.SMBus(busnum if busnum >= 0 else Sunfounder_I2C.getPiI2CBusNumber())
+    self.bus = smbus.SMBus(busnum if busnum >= 0 else Sunfounder_I2C.getPiI2CBusNumber2())
     self.debug = debug
 
   def reverseByteOrder(self, data):

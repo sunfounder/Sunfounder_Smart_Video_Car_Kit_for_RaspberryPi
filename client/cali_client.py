@@ -7,7 +7,7 @@ import os
 top = Tk()   # Create a top window
 top.title('Raspberry Pi Smart Video Car Calibration')
 
-HOST = '192.168.0.133'    # Server(Raspberry Pi) IP address
+HOST = '127.0.0.1'    # Server(Raspberry Pi) IP address
 PORT = 21567
 BUFSIZ = 1024             # buffer size
 ADDR = (HOST, PORT)
@@ -83,7 +83,7 @@ def run(event):
 
 def confirm(event):
 	global offset_x, offset_y, offset, forward0, forward1
-	print 'rewrite conig file'
+	print 'rewrite config file'
 	config = 'offset_x = %s\noffset_y = %s\noffset = %s\nforward0 = %s\nforward1 = %s\n ' % (offset_x, offset_y, offset, forward0, forward1)
 	print ''
 	print '*********************************'
@@ -92,12 +92,15 @@ def confirm(event):
 	print config
 	print '*********************************'
 	print ''
-	fd = open('config', 'w')
+	fd = open(os.path.realpath('config'), 'w')
 	fd.write(config)
 	fd.close()
 	print 'Sending...'
 	try:
-		os.system('sudo scp config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config' % HOST)
+		if os.name == 'nt':
+			os.system('scp config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config' % HOST)
+		elif:
+			os.system('sudo scp config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config' % HOST)
 		print 'Succeed! Quiting...'
 	except:
 		print 'Something wrong happend, check your ip address, and the file location on your raspberry. Quiting...'

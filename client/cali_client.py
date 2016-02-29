@@ -3,6 +3,7 @@
 from Tkinter import *
 from socket import *      # Import necessary modules
 import os
+os.chdir(os.path.dirname(os.path.realpath('config')))
 
 top = Tk()   # Create a top window
 top.title('Raspberry Pi Smart Video Car Calibration')
@@ -92,7 +93,7 @@ def confirm(event):
 	print config
 	print '*********************************'
 	print ''
-	fd = open(os.path.realpath('config'), 'w')
+	fd = open('config', 'w')
 	fd.write(config)
 	fd.close()
 	print 'Sending...'

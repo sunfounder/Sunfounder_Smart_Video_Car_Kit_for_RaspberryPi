@@ -2,6 +2,8 @@
 
 import smbus
 
+RPI_REVISION_2 = ["a01041", "a21041"]
+
 class Sunfounder_I2C(object):
 
   @staticmethod
@@ -19,20 +21,29 @@ class Sunfounder_I2C(object):
       return 0
 
   @staticmethod
+  def getPiRevision_2():
+    try:
+      with open('/proc/cpuinfo','r') as f:
+        for line in f:
+          if line.startswith('Revision'):
+            return 2 if line[11,-1] in RPI_REVISION_2 else 1
+    except:
+      return -1
+
+  @staticmethod
   def getPiI2CBusNumber():
     # Gets the I2C bus number /dev/i2c#
-    return 1 if Sunfounder_I2C.getPiRevision() > 1 else 0
+    return 1 if Sunfounder_I2C.getPiRevision() = 2 else 0
 
   @staticmethod
   def getPiI2CBusNumber2():
-    # get I2C bus number from /dev/i2c-*
-    for file in os.listdir("/dev"):
-      if file[0:3] == "i2c":
-        print file
-        return int(file[-1])
-      else:
-        print "Can not detect I2C device. Try visit www.sunfounder.com for help."
-        print "click Ctrl C to exit."
+    # get I2C bus number from /proc/cpuinfo*
+    if Sunfounder_I2C.getPiRevision_2() == 2:
+      return 1 
+    elif Sunfounder_I2C.getPiRevision_2() == 1:
+      return 0
+    else:
+      print "Error occur while etting Pi Revision."
 
   def __init__(self, address, busnum=-1, debug=False):
     self.address = address

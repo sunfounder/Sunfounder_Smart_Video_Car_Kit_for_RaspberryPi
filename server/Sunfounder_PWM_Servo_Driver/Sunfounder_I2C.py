@@ -2,6 +2,11 @@
 
 import smbus
 
+RPI_REVISION_0 = ["900092"]
+RPI_REVISION_1 = ["0002", "0003", "0004", "0005", "0006", "0007", "0008", "0009", "000d", "000e", "000f", "0010", "0011", "0012", "0013"]
+RPI_REVISION_2 = ["a01041", "a21041"]
+RPI_REVISION_3 = ["a02082", "a22082"]
+
 class Sunfounder_I2C(object):
 
   @staticmethod
@@ -19,9 +24,42 @@ class Sunfounder_I2C(object):
       return 0
 
   @staticmethod
+  def getPiRevision_2():
+    try:
+      f = open('/proc/cpuinfo','r')
+      for line in f:
+        if line.startswith('Revision'):
+          if line[11:-1] in RPI_REVISION_0:
+            return 0
+          elif line[11:-1] in RPI_REVISION_1:
+            return 1
+          elif line[11:-1] in RPI_REVISION_2:
+            return 2
+          elif line[11:-1] in RPI_REVISION_3:
+            return 3
+          else:
+            return line[11:-1]
+    except:
+      f.close()
+      return 'open file error'
+    finally:
+      f.close()
+
+  @staticmethod
   def getPiI2CBusNumber():
     # Gets the I2C bus number /dev/i2c#
-    return 1 if Sunfounder_I2C.getPiRevision() > 1 else 0
+    return 1 if Sunfounder_I2C.getPiRevision() == 2 else 1
+
+  @staticmethod
+  def getPiI2CBusNumber2():
+    # get I2C bus number from /proc/cpuinfo*
+    revision = Sunfounder_I2C.getPiRevision_2()
+    if revision in [2, 3]:
+      return 1 
+    elif revision in [0, 1]:
+      return 0
+    else:
+      raise ValueError("Error occur while getting Pi Revision. Revision:{0}".format(revision))
 
   def __init__(self, address, busnum=-1, debug=False):
     self.address = address
@@ -29,7 +67,7 @@ class Sunfounder_I2C(object):
     # Alternatively, you can hard-code the bus version below:
     # self.bus = smbus.SMBus(0); # Force I2C0 (early 256MB Pi's)
     # self.bus = smbus.SMBus(1); # Force I2C1 (512MB Pi's)
-    self.bus = smbus.SMBus(busnum if busnum >= 0 else Sunfounder_I2C.getPiI2CBusNumber())
+    self.bus = smbus.SMBus(busnum if busnum >= 0 else Sunfounder_I2C.getPiI2CBusNumber2())
     self.debug = debug
 
   def reverseByteOrder(self, data):

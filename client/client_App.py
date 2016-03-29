@@ -8,7 +8,7 @@ ctrl_cmd = ['forward', 'backward', 'left', 'right', 'stop', 'read cpu_temp', 'ho
 top = Tk()   # Create a top window
 top.title('Sunfounder Raspberry Pi Smart Video Car')
 
-HOST = '192.168.0.133'    # Server(Raspberry Pi) IP address
+HOST = '192.168.0.147'    # Server(Raspberry Pi) IP address
 PORT = 21567
 BUFSIZ = 1024             # buffer size
 ADDR = (HOST, PORT)
@@ -43,12 +43,6 @@ def stop_fun(event):
 def home_fun(event):
 	print 'home'
 	tcpCliSock.send('home')
-
-def dis_fun(event):
-	print 'Measuring distance...'
-	tcpCliSock.send('distance')
-	data = tcpCliSock.recv(BUFSIZ)
-	print data
 
 def x_increase(event):
 	print 'x+'
@@ -88,7 +82,6 @@ Btn2 = Button(top, width=5, text='Left')
 Btn3 = Button(top, width=5, text='Right')
 Btn4 = Button(top, width=5, text='Quit')
 Btn5 = Button(top, width=5, height=2, text='Home')
-Btn6 = Button(top, width=5, text='Distance')
 
 # =============================================================================
 # Buttons layout
@@ -99,7 +92,6 @@ Btn2.grid(row=1,column=0)
 Btn3.grid(row=1,column=2)
 Btn4.grid(row=3,column=2)
 Btn5.grid(row=1,column=1)
-Btn6.grid(row=3,column=0)
 
 # =============================================================================
 # Bind the buttons with the corresponding callback function.
@@ -114,7 +106,6 @@ Btn2.bind('<ButtonRelease-1>', stop_fun)
 Btn3.bind('<ButtonRelease-1>', stop_fun)
 Btn4.bind('<ButtonRelease-1>', quit_fun)
 Btn5.bind('<ButtonRelease-1>', home_fun)
-#Btn6.bind('<ButtonRelease-1>', dis_fun)
 
 # =============================================================================
 # Create buttons

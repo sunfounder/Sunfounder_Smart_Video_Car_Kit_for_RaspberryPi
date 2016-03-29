@@ -7,6 +7,8 @@ The SunFounder Smart Video Car Kit for Raspberry Pi is composed of Raspberry Pi,
 Before you run the client routine, you must first run the server routine.
 
 ### Update：
+2016/03/29:fixed speed control
+
 2016/03/22: fixed Raspberry Pi 3 compatibility.
 
 2015/xx/xx: improve i2c number getting, 

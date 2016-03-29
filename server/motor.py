@@ -29,6 +29,7 @@ p = pwm.init()
 # ===========================================================================
 def setSpeed(speed):
 	speed *= 40
+	print 'speed is: ', speed
 	p.setPWM(EN_M0, 0, speed)
 	p.setPWM(EN_M1, 0, speed)
 
@@ -80,12 +81,20 @@ def motor1(x):
 		GPIO.output(Motor1_A, GPIO.HIGH)
 		GPIO.output(Motor1_B, GPIO.LOW)
 
-def forward(spd = 50):
+def forward():
+	motor0(forward0)
+	motor1(forward1)
+
+def backward():
+	motor0(backward0)
+	motor1(backward1)
+
+def forwardWithSpeed(spd = 50):
 	setSpeed(spd)
 	motor0(forward0)
 	motor1(forward1)
 
-def backward(spd = 50):
+def backwardWithSpeed(spd = 50):
 	setSpeed(spd)
 	motor0(backward0)
 	motor1(backward1)

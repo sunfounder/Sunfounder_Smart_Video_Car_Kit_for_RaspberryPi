@@ -112,7 +112,7 @@ while True:
 				print 'ERROR, speed =', spd
 
 		else:
-			print 'cmd error !'
+			print 'Command Error! Cannot recognize command: ' + data
 
 tcpSerSock.close()
 

@@ -103,7 +103,7 @@ def confirm(event):
 		print 'Something wrong happend, check your ip address, and the file location on your raspberry. Quiting...'
 	
 	top.quit()
-	tcpCliSock.send('stop')
+	tcpCliSock.send('motor_stop')
 	tcpCliSock.close()
 
 #--------motor---------------------

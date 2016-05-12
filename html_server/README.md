@@ -17,3 +17,4 @@ Begin calibration by click on the dot in a circle. Notice: calibration adjust st
  - Control the car direction by rotate your phone, like a steering wheel.
  - Control the car forward/backward by the up/down arrow on the left.
  - Control the camera pan/tile by the up/down/left/right arrow on the right. and set the camera back to default position by the middle dot.
+ - Change the motor speed by the bar under the camera view

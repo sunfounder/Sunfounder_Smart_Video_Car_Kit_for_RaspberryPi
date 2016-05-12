@@ -8,6 +8,13 @@ Before you run the client routine, you must first run the server routine.
 
 ### Update：
 
+2016/05/09:
+ - add android app control. (Details in html_server/README.md)
+ - add windows calibration support
+ 	- download and install python 2.7 first at: https://www.python.org/downloads/release/python-2711/
+ 	- run client/cali_client_win.py on windows.
+ 	- client_app.py also can run on windows.
+
 2016/03/29:
  - fixed speed control
  - fixed turning angle

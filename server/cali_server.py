@@ -81,6 +81,22 @@ def loop():
 			elif data[0:10] == 'rightmotor':
 				forward1 = data[10:]
 				motor.motor1(forward1)
+
+			# -------------Added--------------
+			elif data == 'leftreverse':
+				if forward0 == "True":
+					forward0 = "False"
+				else:
+					forward0 = "True"
+				print "left motor reversed to", forward0
+				motor.motor0(forward0)
+			elif data == 'rightreverse':
+				if forward1 == "True":
+					forward1 = "False"
+				else:
+					forward1 = "True"
+				print "right motor reversed to", forward1
+				motor.motor1(forward1)
 			elif data == 'motor_stop':
 				print 'motor stop'
 				motor.stop()
@@ -103,6 +119,51 @@ def loop():
 				video_dir.calibrate(offset_x, offset_y)
 			#----------------------------------------
 
+			#-------Turing calibration 2------
+			elif data[0:7] == 'offset+':
+				offset = offset + int(data[7:])
+				car_dir.calibrate(offset)
+			elif data[0:7] == 'offset-':
+				offset = offset - int(data[7:])
+				car_dir.calibrate(offset)
+			#--------------------------------
+
+			#----------Mount calibration 2---------
+			elif data[0:8] == 'offsetx+':
+				offset_x = offset_x + int(data[8:])
+				print 'Mount offset x', offset_x
+				video_dir.calibrate(offset_x, offset_y)
+			elif data[0:8] == 'offsetx-':
+				offset_x = offset_x - int(data[8:])
+				print 'Mount offset x', offset_x
+				video_dir.calibrate(offset_x, offset_y)
+			elif data[0:8] == 'offsety+':
+				offset_y = offset_y + int(data[8:])
+				print 'Mount offset y', offset_y
+				video_dir.calibrate(offset_x, offset_y)
+			elif data[0:8] == 'offsety-':
+				offset_y = offset_y - int(data[8:])
+				print 'Mount offset y', offset_y
+				video_dir.calibrate(offset_x, offset_y)
+			#----------------------------------------
+
+			#----------Confirm--------------------
+			elif data == 'confirm':
+				config = 'offset_x = %s\noffset_y = %s\noffset = %s\nforward0 = %s\nforward1 = %s\n ' % (offset_x, offset_y, offset, forward0, forward1)
+				print ''
+				print '*********************************'
+				print ' You are setting config file to:'
+				print '*********************************'
+				print config
+				print '*********************************'
+				print ''
+				fd = open('config', 'w')
+				fd.write(config)
+				fd.close()
+
+				motor.stop()
+				tcpCliSock.close()
+				quit()
 			else:
 				print 'Command Error! Cannot recognize command: ' + data
 

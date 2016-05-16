@@ -8,6 +8,12 @@ Before you run the client routine, you must first run the server routine.
 
 ### Update：
 
+2016/05/16:
+ - add i2cHelper.py
+ 	- For those who gets IOERROR: `[Errno 2] No Such File Or Directory`, Try run the i2cHelper.py:
+ 	
+		sudo python i2cHelper.py
+
 2016/05/09:
  - add android app control. (Details in html_server/README.md)
  - add windows calibration support

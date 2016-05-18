@@ -1,6 +1,6 @@
 ### Html server
 ----------
-This app is builds base on Django.
+This app is build base on Django.
 
 Control the Smart video car via the gravity sensor on a cell phone, so you can control the car and the camera onside, as well as view the camera video in real time. What's more, on the app, you can conveniently calibrate the car turing and the pan-tilt. 
 

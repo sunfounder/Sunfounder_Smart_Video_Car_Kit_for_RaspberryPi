@@ -3,6 +3,9 @@
 ### About this kit:
 The SunFounder Smart Video Car Kit for Raspberry Pi is composed of Raspberry Pi, DC-DC Step-down Voltage Module, USB camera, DC motor driver, and PCA9685-based Servo Controller. From the perspective of software, the smart car is of client/server (C/S) structure. The TCP server program is run on Raspberry Pi for direct control of the car. And the video data are acquired and delivered via the open source software MGPJ-streamer in a real-time manner. The TCP client program is run on PC to send the control command. Both the client and server programs are developed in Python language. The smart car is developed based on the open-source hardware Raspberry Pi and integrates the knowledge of mechanics, electronics, and computer, thus having profound educational significance. 
 
+####You can now control your Smart video car with an Android phone! (Details in `html_server/README.md`)
+Download the Android App from [Google Play](https://play.google.com/store/apps/details?id=appinventor.ai_cavonxx.SunFounder_Smart_Video_Car)
+
 #### Notice:
 Before you run the client routine, you must first run the server routine.
 
@@ -15,7 +18,8 @@ Before you run the client routine, you must first run the server routine.
 		sudo python i2cHelper.py
 
 2016/05/09:
- - add android app control. (Details in html_server/README.md)
+ - **add android app control.** 
+	Control the car via the gravity sensor on a cell phone, so you can control the car and the camera onside, as well as view the camera video in real time. What's more, on the app, you can conveniently calibrate the car turning and the pan-tilt. (Details in `html_server/README.md`)
  - add windows calibration support
  	- download and install python 2.7 first at: https://www.python.org/downloads/release/python-2711/
  	- run client/cali_client_win.py on windows.

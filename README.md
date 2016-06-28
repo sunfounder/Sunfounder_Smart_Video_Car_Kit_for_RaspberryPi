@@ -10,6 +10,9 @@ Download the Android App from [Google Play](https://play.google.com/store/apps/d
 Before you run the client routine, you must first run the server routine.
 
 ### Update：
+2016/06/28：
+ - add API file for Html server
+ 	- API files in html_server/APIs.md
 
 2016/05/16:
  - add i2cHelper.py

@@ -28,14 +28,14 @@ For example, set the motor speed to 60:
 |:----------------------------------|:--------------------------|
 |`runmode`							|Initialize the camera and turning wheels to start the run mode|
 |`calibrationmode`					|Initialize the camera and turning wheels to start the calibration mode|   
-<br/>
+
 |**Motor Control**               |Description|
 |:----------------------------------|:--------------------------|
 |`motor/forward`					|Control the motor to forward.|
 |`motor/backward`					|Control the motor to go backward.|
 |`motor/stop`						|Control the motor to stop.|
 |`motor/set/speed/[speed]`			|Set the motor speed to [speed]; speed ranges (0, 100)|    
-<br/>
+
 |**Camera Control**              |Description|
 |:----------------------------------|:--------------------------|
 |`camera/increase/y`				|Increase in the Y axis (move the tilt servo up)|
@@ -43,11 +43,11 @@ For example, set the motor speed to 60:
 |`camera/increase/x`				|Increase in the X axis (move the pan servo right)|
 |`camera/decrease/x`				|Increase in the X axis (move the pan servo left)|
 |`camera/home`						|Set the camera position back to "Home"|  
-<br/>
+
 |**Steering Control**            |Description|
 |:----------------------------------|:--------------------------|
 |`turning/[angle]`					|Turn the turning wheels to [angle]; angle ranges (0, 255) (left, right)|  
-<br/>
+
 |**Calibration**				  |Description|
 |:----------------------------------|:--------------------------|
 |`calibrate/getconfig`				|Get the calibration config from server|

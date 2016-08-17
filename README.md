@@ -59,6 +59,7 @@ solved *IOError: "[Errno 2] No such file or directory"* problem for some Pi.
 	IOError: [Errno 2] No such file or directory
 	Error accessing 0x40: Check your I2C address
 
+
 	This normally means Raspberry Pi could not find the I2C device. So here's what you can do:
 	 - Hardware problem:
 	 	If you are using a DC adapter for your Raspberry Pi, you need to connect the GND between Servo Controller and Raspberry Pi. Because they are common-grounded by the micro USB, and if you use a DC adapter, you have to make another wire for common-ground.

@@ -54,18 +54,19 @@ solved *IOError: "[Errno 2] No such file or directory"* problem for some Pi.
 <a id="trouble"></a>
 ###Trouble Shootings:
 <a id="i2c_trouble"></a>
-1. I2C Trouble
-	>IOError: [Errno 2] No such file or directory
-	>Error accessing 0x40: Check your I2C address
+####I2C Trouble
 
-	This normally means Raspberry Pi could not find the I2C device. So here's what you can do:
-	 - Hardware problem:
-	 	If you are using a DC adapter for your Raspberry Pi, you need to connect the GND between Servo Controller and Raspberry Pi. Because they are common-grounded by the micro USB, and if you use a DC adapter, you have to make another wire for common-ground.
-	 - Software problem:
-	 	Just Run the i2cHelper.py with
+>IOError: [Errno 2] No such file or directory
+>Error accessing 0x40: Check your I2C address
 
-	 		sudo python i2cHelper.py
-	 	And after `i2cdetect`, and you should see your Servo Controller's address: 0x48
+This normally means Raspberry Pi could not find the I2C device. So here's what you can do:
+ - Hardware problem:
+ 	If you are using a DC adapter for your Raspberry Pi, you need to connect the GND between Servo Controller and Raspberry Pi. Because they are common-grounded by the micro USB, and if you use a DC adapter, you have to make another wire for common-ground.
+ - Software problem:
+ 	Just Run the i2cHelper.py with
+
+ 		sudo python i2cHelper.py
+ 	And after `i2cdetect`, and you should see your Servo Controller's address: 0x48
 
 ----------------------------------------------
 <a id="about_sunfounder"></a>

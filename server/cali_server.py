@@ -122,9 +122,11 @@ def loop():
 			#-------Turing calibration 2------
 			elif data[0:7] == 'offset+':
 				offset = offset + int(data[7:])
+				print 'Turning offset', offset
 				car_dir.calibrate(offset)
 			elif data[0:7] == 'offset-':
 				offset = offset - int(data[7:])
+				print 'Turning offset', offset
 				car_dir.calibrate(offset)
 			#--------------------------------
 

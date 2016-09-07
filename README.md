@@ -5,7 +5,7 @@ Quick Links:
  * [About this kit](#about_this_kit)
  * [Update](#update)
  * [Trouble Shootings](#trouble)
-    * [I2C Trouble] (#i2c_trouble)
+    * [I2C Trouble](#i2c_trouble)
  * [About SunFounder](#about_sunfounder)
  * [Contact us](#contact_us)
 
@@ -20,8 +20,11 @@ Download the Android App from [Google Play](https://play.google.com/store/apps/d
 Before you run the client routine, you must first run the server routine.
 
 <a id="update"></a>
-### Update：
-2016/06/28：
+### Update:
+2016/09/07:
+ - merge cali_client_win.py to cali_client.py
+    - Windows users now can run cali_client.py on windows now.
+2016/06/28:
  - add API file for Html server
  	- API files in html_server/APIs.md
 

@@ -7,7 +7,7 @@ import os
 top = Tk()   # Create a top window
 top.title('Raspberry Pi Smart Video Car Calibration')
 
-HOST = '192.168.0.133'    # Server(Raspberry Pi) IP address
+HOST = '192.168.0.159'    # Server(Raspberry Pi) IP address
 PORT = 21567
 BUFSIZ = 1024             # buffer size
 ADDR = (HOST, PORT)
@@ -28,44 +28,7 @@ forward1 = 'True'
 # =============================================================================
 
 def setup():
-	global offset_x, offset_y, offset, forward0, forward1
-	try:
-		os.system('scp pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config config' % HOST)
-	except:
-		print 'Error SCP config file'
-
-	try:
-		print 'Reading from config file...',
-		for line in open('config'):
-			if line[0:8] == 'offset_x':
-				offset_x = int(line[11:-1])
-			if line[0:8] == 'offset_y':
-				offset_y = int(line[11:-1])
-			if line[0:8] == 'offset =':
-				offset = int(line[9:-1])
-			if line[0:8] == "forward0":
-				forward0 = line[11:-1]
-			if line[0:8] == "forward1":
-				forward1 = line[11:-1]
-		print 'done.'
-
-	except:
-		print 'Initializing config file...',
-		offset_x = 0
-		offset_y = 0
-		offset = 0
-		forward0 = True
-		forward1 = True
-		print 'done.'
-
-	print '\noffset_x =', offset_x
-	print 'offset_y =', offset_y
-	print 'Turning offset =', offset
-	print 'forward0 =', forward0
-	print 'forward1 =', forward1
-#	tcpCliSock.send('offset=%s' % offset)
-#	tcpCliSock.send('offsetx=%s' % offset_x)
-#	tcpCliSock.send('offsety=%s' % offset_y)
+	pass
 
 # =============================================================================
 # The function is to send the command forward to the server, so as to make the 
@@ -82,139 +45,84 @@ def run(event):
 		runbtn = 'Stop'
 
 def confirm(event):
-	global offset_x, offset_y, offset, forward0, forward1
-	print 'rewrite conig file'
-	config = 'offset_x = %s\noffset_y = %s\noffset = %s\nforward0 = %s\nforward1 = %s\n ' % (offset_x, offset_y, offset, forward0, forward1)
-	print ''
-	print '*********************************'
-	print ' You are setting config file to:'
-	print '*********************************'
-	print config
-	print '*********************************'
-	print ''
-	fd = open('config', 'w')
-	fd.write(config)
-	fd.close()
-	print 'Sending...'
-	try:
-		os.system('sudo scp config pi@%s:/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config' % HOST)
-		print 'Succeed! Quiting...'
-	except:
-		print 'Something wrong happend, check your ip address, and the file location on your raspberry. Quiting...'
+	tcpCliSock.send('confirm')
 	
 	top.quit()
-	tcpCliSock.send('motor_stop')
 	tcpCliSock.close()
 
 #--------motor---------------------
 def left_reverse(event):
-	global forward0
-	print 'left_reverse'
-	if forward0 == 'True':
-		forward0 = 'False'
-	elif forward0 == 'False':
-		forward0 = 'True'
-	left_cmd = 'leftmotor%s' % forward0
+	left_cmd = 'leftreverse'
 	tcpCliSock.send(left_cmd)
 
 def right_reverse(event):
-	global forward1
-	print 'right_reverse'
-	if forward1 == 'True':
-		forward1 = 'False'
-	elif forward1 == 'False':
-		forward1 = 'True'
-	right_cmd = 'rightmotor%s' % forward1
+	right_cmd = 'rightreverse'
 	tcpCliSock.send(right_cmd)
 #----------------------------------------
 
 #---------turing---------------
 def fineturn_left(event):
-	global offset
 	print 'fineturn_left'
-	offset -= 1
-	cmd = 'offset=%s' % offset
+	cmd = 'offset-1'
 	tcpCliSock.send(cmd)
 
 def fineturn_right(event):
-	global offset
 	print 'fineturn_right'
-	offset += 1
-	cmd = 'offset=%s' % offset
+	cmd = 'offset+1'
 	tcpCliSock.send(cmd)
 
 def coarseturn_left(event):
-	global offset
 	print 'coarseturn_left'
-	offset -= 10
-	cmd = 'offset=%s' % offset
+	cmd = 'offset-10'
 	tcpCliSock.send(cmd)
 
 def coarseturn_right(event):
-	global offset
 	print 'coarseturn_right'
-	offset += 10
-	cmd = 'offset=%s' % offset
+	cmd = 'offset+10'
 	tcpCliSock.send(cmd)
 #------------------------------
 
 #-----------mount-----------------
 #-------------x------------------
 def finex_left(event):
-	global offset_x
-	offset_x += 1
-	cmd = 'offsetx=%s' % offset_x
+	cmd = 'offsetx+1'
 	print cmd
 	tcpCliSock.send(cmd)
 
 def finex_right(event):
-	global offset_x
-	offset_x -= 1
-	cmd = 'offsetx=%s' % offset_x
+	cmd = 'offsetx-1'
 	print cmd
 	tcpCliSock.send(cmd)
 
 def coarsex_left(event):
-	global offset_x
-	offset_x += 10
-	cmd = 'offsetx=%s' % offset_x
+	cmd = 'offsetx+10'
 	print cmd
 	tcpCliSock.send(cmd)
 
 def coarsex_right(event):
-	global offset_x
-	offset_x -= 10
-	cmd = 'offsetx=%s' % offset_x
+	cmd = 'offsetx-10'
 	print cmd
 	tcpCliSock.send(cmd)
 
 #---------y-----------------------
 def finey_down(event):
-	global offset_y
 	print 'finey_down'
-	offset_y -= 1
-	cmd = 'offsety=%s' % offset_y
+	cmd = 'offsety-1'
 	tcpCliSock.send(cmd)
 
 def finey_up(event):
-	global offset_y
 	print 'finey_up'
-	offset_y += 1
-	cmd = 'offsety=%s' % offset_y
+	cmd = 'offsety+1'
 	tcpCliSock.send(cmd)
 
 def coarsey_down(event):
-	global offset_y
 	print 'coarsey_down'
-	offset_y -= 10
-	cmd = 'offsety=%s' % offset_y
+	cmd = 'offsety-10'
 	tcpCliSock.send(cmd)
 
 def coarsey_up(event):
-	global offset_y
 	print 'coarsey_up'
-	offset_y += 10
-	cmd = 'offsety=%s' % offset_y
+	cmd = 'offsety+10'
 	tcpCliSock.send(cmd)
 #--------------------------------
 
@@ -224,7 +132,7 @@ def coarsey_up(event):
 # =============================================================================
 def quit_fun(event):
 	top.quit()
-	tcpCliSock.send('stop')
+	tcpCliSock.send('motor_stop')
 	tcpCliSock.close()
 
 # =============================================================================

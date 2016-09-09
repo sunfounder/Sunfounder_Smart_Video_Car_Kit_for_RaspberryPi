@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
-import Sunfounder_PWM_Servo_Driver.Servo_init as pwm
+import PCA9685 as pwm
 import time    # Import necessary modules
 
 # ===========================================================================
@@ -21,7 +21,7 @@ EN_M1    = 5  # servo driver IC CH5
 
 pins = [Motor0_A, Motor0_B, Motor1_A, Motor1_B]
 
-p = pwm.init()
+p = pwm.PWM()
 
 # ===========================================================================
 # Adjust the duty cycle of the square waves output from channel 4 and 5 of
@@ -30,8 +30,8 @@ p = pwm.init()
 def setSpeed(speed):
 	speed *= 40
 	print 'speed is: ', speed
-	p.setPWM(EN_M0, 0, speed)
-	p.setPWM(EN_M1, 0, speed)
+	p.set_value(EN_M0, 0, speed)
+	p.set_value(EN_M1, 0, speed)
 
 def setup():
 	global forward0, forward1, backward1, backward0

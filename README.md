@@ -6,6 +6,7 @@ Quick Links:
  * [Update](#update)
  * [Trouble Shootings](#trouble)
     * [I2C Trouble](#i2c_trouble)
+    * [_tkinter.TclError](#tkinter.tclerror)
  * [About SunFounder](#about_sunfounder)
  * [Contact us](#contact_us)
 
@@ -21,6 +22,8 @@ Before you run the client routine, you must first run the server routine.
 
 <a id="update"></a>
 ### Update:
+2016/09/12:
+ - arrange the pca9685 module to one module.
 2016/09/07:
  - merge cali_client_win.py to cali_client.py
     - Windows users now can run cali_client.py on windows now.
@@ -70,6 +73,27 @@ This normally means Raspberry Pi could not find the I2C device. So here's what y
 
  		sudo python i2cHelper.py
  	And after `i2cdetect`, and you should see your Servo Controller's address: 0x48
+
+<a id="tkinter.tclerror"></a>
+####_tkinter.TclError
+
+    pi@raspberrypi:~/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/client $ sudo python cali_client.py
+    Traceback (most recent call last):
+      File "cali_client.py", line 7, in <module>
+        top = Tk()   # Create a top window
+      File "/usr/lib/python2.7/lib-tk/Tkinter.py", line 1813, in __init__
+        self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+    _tkinter.TclError: no display name and no $DISPLAY environment variable
+
+ This usually happens when you try to run `cali_client.py` or `client_App.py` on Raspberry Pi remotely. Like using PuTTy.
+  - Reason:
+    `cali_client.py` and `client_App.py` run under the `tkinter`, which need a $DISPLAY, usually a GUI. Remotely log in to Raspberry Pi normally under bash, which is a CLI.
+  - Solution:
+    Try run the cali_client.py and client_App.py directly on your PC or Mac. It needs Python 2.7 installed on your computer. So:
+    1. Go to python.org, download the lastest release of Python 2.7 for the operating system you are using, and install.
+    2. Go to [the github repository](https://github.com/sunfounder/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi), and download the source code by clicking the green button on the right.
+    3. Unzip the zip file.
+    4. Edit the `HOST` in the server file with Python IDLE (in Windows, usually, right click the .py file and select "Edit in IDLE"), and select **Run** => **Run Module   F5** to run the module.
 
 ----------------------------------------------
 <a id="about_sunfounder"></a>

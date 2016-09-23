@@ -63,7 +63,10 @@ solved *IOError: "[Errno 2] No such file or directory"* problem for some Pi.
 ####I2C Trouble
 
 	IOError: [Errno 2] No such file or directory
+	
 	Error accessing 0x40: Check your I2C address
+	
+	IOError: [Errno 5] Input/output error
 
 This normally means Raspberry Pi could not find the I2C device. So here's what you can do:
  - **Hardware problem**:<br>

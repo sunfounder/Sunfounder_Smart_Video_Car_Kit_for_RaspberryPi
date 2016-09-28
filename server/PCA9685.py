@@ -31,7 +31,11 @@ class PWM(object):
 	_OUTDRV				= 0x04
 
 	_BUS_0_TYPES = ['Pi 1 Model B']
-	_BUS_1_TYPES = ['Pi 3 Model B', 'Pi 2 Model B', 'Model B+']
+	_BUS_1_TYPES = ['Pi 3 Model B',
+					'Pi 3 Model B',
+					'Pi 2 Model B',
+					'Pi2 Model B',
+					'Model B+']
 
 	_DEBUG = False
 	_DEBUG_INFO = 'DEBUG "PCA9685.py":'
@@ -80,7 +84,7 @@ class PWM(object):
 		elif pi_type in self._BUS_1_TYPES:
 			bus_number = 1
 		else:
-			raise ValueError("Reading Pi type error, Your Pi {0} is not in the list".format(pi_type))
+			raise ValueError('Reading Pi type error, Your Pi "{0}"" is not in the list.\n  Please post an Issus at our Github Page or contract us\n    Github page: https://github.com/sunfounder/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/issues\n    Email: support@sunfounder.com\n    SunFounder'.format(pi_type))
 
 		if self._DEBUG:
 			print self._DEBUG_INFO, 'Get i2c bus number %d' % bus_number

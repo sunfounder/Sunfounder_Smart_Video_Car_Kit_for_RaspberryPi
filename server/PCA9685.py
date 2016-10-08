@@ -40,11 +40,6 @@ class PWM(object):
 	_DEBUG = False
 	_DEBUG_INFO = 'DEBUG "PCA9685.py":'
 
-	def softwareReset(cls):
-		if self._DEBUG:
-			print self._DEBUG_INFO, "Reset"
-		cls.general_call_i2c.writeRaw8(0x06)
-
 	def __init__(self, bus_number=None, address=0x40):
 		if self._DEBUG:
 			print self._DEBUG_INFO, "Debug on"

@@ -22,6 +22,7 @@ EN_M1    = 5  # servo driver IC CH5
 pins = [Motor0_A, Motor0_B, Motor1_A, Motor1_B]
 
 p = pwm.PWM()
+p.set_frequency(60)
 
 # ===========================================================================
 # Adjust the duty cycle of the square waves output from channel 4 and 5 of

@@ -22,6 +22,9 @@ Before you run the client routine, you must first run the server routine.
 
 <a id="update"></a>
 ### Update:
+2016/10/08:
+ - Fix servos turn to extreme angle.
+   + Add setting frequency.
 2016/09/12:
  - arrange the pca9685 module to one module.
 2016/09/07:

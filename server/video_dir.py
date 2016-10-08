@@ -29,6 +29,7 @@ def setup():
 	home_x = (Xmax + Xmin)/2
 	home_y = Ymin + 80
 	pwm = servo.PWM()           # Initialize the servo controller. 
+	pwm.set_frequency(60)
 
 # ==========================================================================================
 # Control the servo connected to channel 14 of the servo control board to make the camera 

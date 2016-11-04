@@ -78,7 +78,9 @@ def main():
 	print '   ===================================='
 	print '   ||                                ||'
 	print '   ||     Raspberry Pi I2C check     ||'
+	print '   ||        and setup tools         ||'
 	print '   ||                                ||'
+	print '   ||                     SunFounder ||'
 	print '   ===================================='
 	print ''
 	time.sleep(2)

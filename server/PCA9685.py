@@ -107,8 +107,6 @@ class PWM(object):
 		time.sleep(0.005)
 		self._write_byte_data(self._MODE1, old_mode | 0x80)
 
-		self.set_debug(self._DEBUG)
-
 	def set_value(self, channel, on, off):
 		if self._DEBUG:
 			print self._DEBUG_INFO, 'Set channel "%d" to value "%d"' % (channel, off)

@@ -1,8 +1,11 @@
 from django.http import HttpResponse
+
+from django.shortcuts import render
 import video_dir
 import car_dir
 import motor
 import os
+
 
 # Run camera
 LD_LIBRARY_PATH = "/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/mjpg-streamer/mjpg-streamer/"
@@ -172,3 +175,6 @@ def calibrate_confirm(request):
 def test(request, direction, text):
 	text = direction + str(text)
 	return HttpResponse(text)
+
+def client(request):
+    	return render(request, 'client.html')

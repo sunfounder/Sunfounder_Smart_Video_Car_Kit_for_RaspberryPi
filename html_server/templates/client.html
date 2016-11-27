@@ -39,7 +39,7 @@
         <p>Please make sure html server is running on raspberry pi.</p>
     </header>
     <label id="errormessage" class="error"></label>
-   
+
     <div id="runmodediv">
         <div id="motiondiv" class="left">
             <p>Vehicle Motion</p>
@@ -65,7 +65,7 @@
                 <tr>
                     <td/>
                     <td>
-                        <button id="motorbackward" onclick="SmartVideoCarAPI.api.sendCommand('movebackward');">Move Backward</button>
+                        <button id="motorbackward" onclick="SmartVideoCarAPI.api.sendCommand('motorbackward');">Move Backward</button>
                     </td>
                     <td/>
                 </tr>
@@ -107,7 +107,9 @@
             </table>
         </div>
     </div>
-    <img id="livestream" src="javascript: SmartVideoCarAPI.api.getStreamUrl();" alt="streamed video" />
+    <div>
+        <img id="livestream" src="javascript: SmartVideoCarAPI.api.getStreamUrl();" alt="mjpg streamer is not running. Please start it to view the stream." />
+    </div>
 </body>
 
 </html>

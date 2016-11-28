@@ -49,6 +49,7 @@ SmartVideoCarAPI.api = (function () {
     };
 
     var setSpeed = function (speed) {
+        var baseurl = "http://" + document.domain + ":8000/";
         $.get(baseurl + "motor/set/speed/" + speed);
     };
 

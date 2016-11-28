@@ -32,7 +32,7 @@
     <title>Sunfounder Smart Video Car Kit - Web Client</title>
 </head>
 
-<body>
+<body onload="SmartVideoCarAPI.api.init();">
     <header>
 
         <h1>Web Client</h1>
@@ -71,11 +71,13 @@
                 </tr>
             </table>
             <div>
-                <input type="range" id="motorspeedrange" min="0" max="100" value="25" oninput="motorspeed.value = motorspeedrange.value">Speed
+                <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value" onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
                 </input>:
-                <output id="motorspeed">25</output>
+                <output id="motorspeed">50</output>
             </div>
         </div>
+        <div>
+    </div>
         <div id="cameradiv" class="right">
             <p>Camera</p>
             <table>
@@ -107,9 +109,7 @@
             </table>
         </div>
     </div>
-    <div>
-        <img id="livestream" src="javascript: SmartVideoCarAPI.api.getStreamUrl();" alt="mjpg streamer is not running. Please start it to view the stream." />
-    </div>
+    
 </body>
 
 </html>

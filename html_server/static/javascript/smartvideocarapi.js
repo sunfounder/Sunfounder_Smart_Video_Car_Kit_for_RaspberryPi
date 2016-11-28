@@ -41,13 +41,26 @@ SmartVideoCarAPI.api = (function () {
         };
     };
 
-    var getStreamUrl = function () {
-        return "http://" + document.domain + ":8080/?action=stream";
+    var initializeVideo = function () {
+        var streamImageUrl = "http://" + document.domain + ":8080/?action=stream";
+        $("body").css("background-image", "url('" + streamImageUrl + "')");
+        $("body").css("background-repeat", "no-repeat");
+        $("body").css("background-position", "center");
+    };
+
+    var setSpeed = function (speed) {
+        $.get(baseurl + "motor/set/speed/" + speed);
+    };
+
+    var init = function () {
+        initializeVideo();
+        setSpeed(50);
     };
 
     return {
         sendCommand: sendCommand,
-        getStreamUrl: getStreamUrl
+        init: init,
+        setSpeed: setSpeed
     };
 
 })(this)

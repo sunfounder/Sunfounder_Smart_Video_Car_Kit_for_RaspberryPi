@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-
 from django.shortcuts import render
 import video_dir
 import car_dir

@@ -8,6 +8,15 @@
     <script src="{% static "javascript/jquery-3.1.1.min.js" %}"></script>
     <script src="{% static "javascript/smartvideocarapi.js" %}"></script>
     <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
         button {
             height: 80px;
             width: 100px;
@@ -24,13 +33,13 @@
             left: 0px;
             width: 50%;
         }
-
-        .leftbuttonpanel{
+        
+        .leftbuttonpanel {
             float: left;
             margin: 10px;
         }
-
-        .rightbuttonpanel{
+        
+        .rightbuttonpanel {
             float: right;
             margin: 10px;
         }
@@ -42,6 +51,7 @@
     </style>
     <title>Sunfounder Smart Video Car Kit - Web Client</title>
 </head>
+
 <body onload="SmartVideoCarAPI.api.init();">
     <label id="errormessage" class="error"></label>
     <div id="runmodediv">
@@ -74,13 +84,14 @@
                 </tr>
             </table>
             <div>
-                <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value" onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
+                <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value"
+                    onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
                 </input>:
                 <output id="motorspeed">50</output>
             </div>
         </div>
         <div>
-    </div>
+        </div>
         <div id="cameradiv" class="right">
             <table class="rightbuttonpanel">
                 <tr>
@@ -112,4 +123,5 @@
         </div>
     </div>
 </body>
+
 </html>

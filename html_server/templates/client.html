@@ -82,13 +82,18 @@
                     </td>
                     <td/>
                 </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value"
+                                onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
+                            </input>:
+                            <output id="motorspeed">50</output>
+                        </div>
+                    </td>
+                </tr>
             </table>
-            <div>
-                <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value"
-                    onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
-                </input>:
-                <output id="motorspeed">50</output>
-            </div>
+
         </div>
         <div>
         </div>

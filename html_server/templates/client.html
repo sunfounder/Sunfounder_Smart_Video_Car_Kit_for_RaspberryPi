@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="{% static "fonts/font-awesome.min.css" %}">
     <script src="{% static "javascript/jquery-3.1.1.min.js" %}"></script>
     <script src="{% static "javascript/smartvideocarapi.js" %}"></script>
+
     <style>
         body {
             -webkit-touch-callout: none;
@@ -17,9 +19,10 @@
             user-select: none;
         }
         
-        button {
-            height: 80px;
+        td {
+            height: 100px;
             width: 100px;
+            align-content: center center;
         }
         
         .right {
@@ -46,7 +49,7 @@
         
         .error {
             color: red;
-            font-weight: 10;
+            font-weight: 50;
         }
     </style>
     <title>Sunfounder Smart Video Car Kit - Web Client</title>
@@ -59,26 +62,26 @@
             <table class="leftbuttonpanel">
                 <tr>
                     <td/>
-                    <td>
-                        <button id="motorforward" onclick="SmartVideoCarAPI.api.sendCommand('motorforward');">Move Forward</button>
+                    <td align="center">
+                        <span id="motorforward" onclick="SmartVideoCarAPI.api.sendCommand('motorforward');" class="fa fa-angle-up fa-5x"></span>
                     </td>
                     <td/>
                 </tr>
                 <tr>
-                    <td>
-                        <button id="turnleft" onclick="SmartVideoCarAPI.api.sendCommand('turnleft');">Turn Left</button>
+                     <td align="center">
+                        <span id="turnleft" onclick="SmartVideoCarAPI.api.sendCommand('turnleft');" class="fa fa-angle-left fa-5x"></span>
                     </td>
-                    <td>
-                        <button id="motorhome" onclick="SmartVideoCarAPI.api.sendCommand('motorhome');">Home</button>
+                     <td align="center">
+                        <span id="motorhome" onclick="SmartVideoCarAPI.api.sendCommand('motorhome');" class="fa fa-circle-o fa-5x"></span>
                     </td>
-                    <td>
-                        <button id="turnright" onclick="SmartVideoCarAPI.api.sendCommand('turnright');">Turn Right</button>
+                     <td align="center">
+                        <span id="turnright" onclick="SmartVideoCarAPI.api.sendCommand('turnright');" class="fa fa-angle-right fa-5x"></span>
                     </td>
                 </tr>
                 <tr>
                     <td/>
-                    <td>
-                        <button id="motorbackward" onclick="SmartVideoCarAPI.api.sendCommand('motorbackward');">Move Backward</button>
+                     <td align="center">
+                        <span id="motorbackward" onclick="SmartVideoCarAPI.api.sendCommand('motorbackward');" class="fa fa-angle-down fa-5x"></span>
                     </td>
                     <td/>
                 </tr>
@@ -101,28 +104,27 @@
             <table class="rightbuttonpanel">
                 <tr>
                     <td/>
-                    <td>
-                        <button id="cameraincreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasey');">Up</button>
+                     <td align="center">
+                        <span id="cameraincreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasey');" class="fa fa-angle-up fa-5x"></span>
                     </td>
                     <td/>
                 </tr>
                 <tr>
-                    <td>
-                        <button id="cameradecreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasex');">Left</button>
+                     <td align="center">
+                        <span id="cameradecreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasex');" class="fa fa-angle-left fa-5x"></span>
 
                     </td>
-                    <td>
-                        <button id="camerahome" onclick="SmartVideoCarAPI.api.sendCommand('camerahome');">Home</button>
+                     <td align="center">
+                        <span id="camerahome" onclick="SmartVideoCarAPI.api.sendCommand('camerahome');" class="fa fa-video-camera fa-5x"></span>
                     </td>
-                    <td>
-                        <button id="cameraincreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasex');">Right</button>
+                     <td align="center">
+                        <span id="cameraincreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasex');" class="fa fa-angle-right fa-5x"></span>
                     </td>
                 </tr>
                 <tr>
                     <td/>
-                    <td>
-                        <button id="cameradecreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasey');">Down</button>
-
+                     <td align="center">
+                        <span id="cameradecreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasey');" class="fa fa-angle-down fa-5x"></span>
                     </td>
                     <td/>
                 </tr>

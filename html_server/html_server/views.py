@@ -19,6 +19,12 @@ OUTPUT_PATH = LD_LIBRARY_PATH + OUTPUT_PATH
 command = MJPG_STREAMER_PATH + ' -i \"' + INPUT_PATH + '" -o "' + OUTPUT_PATH + '" &'
 os.system(command)
 
+video_dir.setup()
+car_dir.setup()
+motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
+video_dir.home_x_y()
+car_dir.home()
+
 # Read config file
 FILE_CONFIG = "/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config"
 offset = "0"

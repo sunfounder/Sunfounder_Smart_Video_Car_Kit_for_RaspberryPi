@@ -13,7 +13,7 @@ SmartVideoCarAPI.api = (function () {
                 break;
             case "motorhome":
                 $.get(baseurl + "motor/stop");
-                $.get(baseurl + "turning/100");
+                $.get(baseurl + "turning/128");
                 break;
             case "turnleft":
                 $.get(baseurl + "turning/55");

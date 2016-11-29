@@ -45,8 +45,8 @@ SmartVideoCarAPI.api = (function () {
         var streamImageUrl = "http://" + document.domain + ":8080/?action=stream";
         $("body").css("background-image", "url('" + streamImageUrl + "')");
         $("body").css("background-repeat", "no-repeat");
-        $("body").css("background-position", "center");
-    };
+        $("body").css("background-position", "center top");
+    }; 
 
     var setSpeed = function (speed) {
         var baseurl = "http://" + document.domain + ":8000/";

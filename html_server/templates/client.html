@@ -1,0 +1,141 @@
+<!DOCTYPE html> {% load staticfiles %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="{% static "fonts/font-awesome.min.css" %}">
+    <script src="{% static "javascript/jquery-3.1.1.min.js" %}"></script>
+    <script src="{% static "javascript/smartvideocarapi.js" %}"></script>
+
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: lightgray;
+        }
+        
+        td {
+            height: 100px;
+            width: 100px;
+            align-content: center center;
+        }
+
+        span:active{
+            background-color: gray;
+        }
+        
+        .right {
+            position: absolute;
+            right: 0px;
+            width: 50%;
+        }
+        
+        .left {
+            position: absolute;
+            left: 0px;
+            width: 50%;
+        }
+        
+        .leftbuttonpanel {
+            float: left;
+            margin: 10px;
+        }
+        
+        .rightbuttonpanel {
+            float: right;
+            margin: 10px;
+        }
+        
+        .error {
+            color: red;
+            font-weight: 50;
+        }
+    </style>
+    <title>Sunfounder Smart Video Car Kit - Web Client</title>
+</head>
+
+<body onload="SmartVideoCarAPI.api.init();">
+    <label id="errormessage" class="error"></label>
+    <div id="runmodediv">
+        <div id="motiondiv" class="left">
+            <table class="leftbuttonpanel">
+                <tr>
+                    <td/>
+                    <td align="center">
+                        <span id="motorforward" onclick="SmartVideoCarAPI.api.sendCommand('motorforward');" class="fa fa-angle-up fa-5x"></span>
+                    </td>
+                    <td/>
+                </tr>
+                <tr>
+                     <td align="center">
+                        <span id="turnleft" onclick="SmartVideoCarAPI.api.sendCommand('turnleft');" class="fa fa-angle-left fa-5x"></span>
+                    </td>
+                     <td align="center">
+                        <span id="motorhome" onclick="SmartVideoCarAPI.api.sendCommand('motorhome');" class="fa fa-circle-o fa-5x"></span>
+                    </td>
+                     <td align="center">
+                        <span id="turnright" onclick="SmartVideoCarAPI.api.sendCommand('turnright');" class="fa fa-angle-right fa-5x"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td/>
+                     <td align="center">
+                        <span id="motorbackward" onclick="SmartVideoCarAPI.api.sendCommand('motorbackward');" class="fa fa-angle-down fa-5x"></span>
+                    </td>
+                    <td/>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <input type="range" id="motorspeedrange" min="0" max="100" value="50" oninput="motorspeed.value = motorspeedrange.value"
+                                onchange="SmartVideoCarAPI.api.setSpeed(motorspeedrange.value);">Speed
+                            </input>:
+                            <output id="motorspeed">50</output>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div>
+        </div>
+        <div id="cameradiv" class="right">
+            <table class="rightbuttonpanel">
+                <tr>
+                    <td/>
+                     <td align="center">
+                        <span id="cameraincreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasey');" class="fa fa-angle-up fa-5x"></span>
+                    </td>
+                    <td/>
+                </tr>
+                <tr>
+                     <td align="center">
+                        <span id="cameradecreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasex');" class="fa fa-angle-left fa-5x"></span>
+
+                    </td>
+                     <td align="center">
+                        <span id="camerahome" onclick="SmartVideoCarAPI.api.sendCommand('camerahome');" class="fa fa-video-camera fa-5x"></span>
+                    </td>
+                     <td align="center">
+                        <span id="cameraincreasex" onclick="SmartVideoCarAPI.api.sendCommand('cameraincreasex');" class="fa fa-angle-right fa-5x"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td/>
+                     <td align="center">
+                        <span id="cameradecreasey" onclick="SmartVideoCarAPI.api.sendCommand('cameradecreasey');" class="fa fa-angle-down fa-5x"></span>
+                    </td>
+                    <td/>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -41,4 +41,5 @@ urlpatterns = [
     url(r'^calibrate/pan/(.)/(\d{1,3})', views.calibrate_pan),
     url(r'^calibrate/tile/(.)/(\d{1,3})', views.calibrate_tile),
     url(r'^test/(.)/(\d{0,3})', views.test),
+    url(r'^client/', views.client),
 ]

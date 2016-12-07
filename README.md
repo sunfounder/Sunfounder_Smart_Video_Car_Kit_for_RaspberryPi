@@ -95,11 +95,11 @@ This normally means Raspberry Pi could not find the I2C device. So here's what y
   - Reason:
     `cali_client.py` and `client_App.py` run under the `tkinter`, which need a $DISPLAY, usually a GUI. Remotely log in to Raspberry Pi normally under bash, which is a CLI.
   - Solution:
-    Try run the cali_client.py and client_App.py directly on your PC or Mac. It needs Python 2.7 installed on your computer. So:
+    Try run the `cali_client.py` and `client_App.py` directly on your PC or Mac. It needs Python 2.7 installed on your computer. So:
     1. Go to python.org, download the lastest release of Python 2.7 for the operating system you are using, and install.
     2. Go to [the github repository](https://github.com/sunfounder/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi), and download the source code by clicking the green button on the right.
     3. Unzip the zip file.
-    4. Edit the `HOST` in the server file with Python IDLE (in Windows, usually, right click the .py file and select "Edit in IDLE"), and select **Run** => **Run Module   F5** to run the module.
+    4. Edit the `HOST` in `cali_client.py` or `client_App.py` with Python IDLE (in Windows, usually, right click the .py file and select "Edit in IDLE"), and select **Run** => **Run Module   F5** to run the module.
 
 ----------------------------------------------
 <a id="about_sunfounder"></a>

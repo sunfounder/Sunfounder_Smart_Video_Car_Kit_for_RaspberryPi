@@ -22,23 +22,22 @@ Before you run the client routine, you must first run the server routine.
 
 <a id="update"></a>
 ### Update:
-2016/10/08:
- - Fix servos turn to extreme angle.
-   + Add setting frequency.
-2016/09/12:
+- 2016/10/08:
+  - Fix servos turn to extreme angle.
+    + Add setting frequency.
+- 2016/09/12:
  - arrange the pca9685 module to one module.
-2016/09/07:
- - merge cali_client_win.py to cali_client.py
-    - Windows users now can run cali_client.py on windows now.
-2016/06/28:
- - add API file for Html server
- 	- API files in html_server/APIs.md
+- 2016/09/07:
+  - merge cali_client_win.py to cali_client.py
+    - Windows users now can run cali_client.py on windows now.
+- 2016/06/28:
+  - add API file for Html server
+    - API files in html_server/APIs.md
+- 2016/05/16:
+  - add i2cHelper.py
+    - For those who gets IOERROR: `[Errno 2] No Such File Or Directory`, Try run the i2cHelper.py:
 
-2016/05/16:
- - add i2cHelper.py
- 	- For those who gets IOERROR: `[Errno 2] No Such File Or Directory`, Try run the i2cHelper.py:
- 	
-		sudo python i2cHelper.py
+                sudo python i2cHelper.py
 
 2016/05/09:
  - **add android app control.** 

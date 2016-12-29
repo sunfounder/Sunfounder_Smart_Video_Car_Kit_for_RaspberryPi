@@ -97,10 +97,10 @@ class PWM(object):
 					elif line[11:-1] in self.RPI_REVISION_3:
 						return 1
 					else:
-						return line[11:-1]
-		except:
+						raise ValueError("Error occur while getting Pi Revision. Revision:{0}".format(revision))
+		except Exception, e:
 			f.close()
-			return 'Open file error'
+			print e
 		finally:
 			f.close()
 

@@ -21,7 +21,7 @@ def setup():
 	homePWM += offset
 	rightPWM += offset
 	pwm = servo.PWM()         # Initialize the servo controller.
-	pwm.set_frequency(60)
+	pwm.frequency = 60
 
 # ==========================================================================================
 # Control the servo connected to channel 0 of the servo control board, so as to make the 
@@ -29,14 +29,14 @@ def setup():
 # ==========================================================================================
 def turn_left():
 	global leftPWM
-	pwm.set_value(0, 0, leftPWM)  # CH0
+	pwm.write(0, 0, leftPWM)  # CH0
 
 # ==========================================================================================
 # Make the car turn right.
 # ==========================================================================================
 def turn_right():
 	global rightPWM
-	pwm.set_value(0, 0, rightPWM)
+	pwm.write(0, 0, rightPWM)
 
 # ==========================================================================================
 # Make the car turn back.
@@ -44,14 +44,14 @@ def turn_right():
 
 def turn(angle):
 	angle = Map(angle, 0, 255, leftPWM, rightPWM)
-	pwm.set_value(0, 0, angle)
+	pwm.write(0, 0, angle)
 
 def home():
 	global homePWM
-	pwm.set_value(0, 0, homePWM)
+	pwm.write(0, 0, homePWM)
 
 def calibrate(x):
-	pwm.set_value(0, 0, 450+x)
+	pwm.write(0, 0, 450+x)
 
 def test():
 	while True:

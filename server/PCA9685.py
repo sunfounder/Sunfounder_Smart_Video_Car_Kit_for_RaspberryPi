@@ -7,7 +7,7 @@
 * Brand       : SunFounder
 * E-mail      : service@sunfounder.com
 * Website     : www.sunfounder.com
-* Version     : v1.1.0
+* Version     : v1.2.0
 **********************************************************************
 '''
 
@@ -50,6 +50,23 @@ class PWM(object):
     _DEBUG_INFO = 'DEBUG "PCA9685.py":'
 
     def _get_bus_number(self):
+        pi_revision = self._get_pi_revision()
+        if   pi_revision == '0':
+            return 0
+        elif pi_revision == '1 Module B':
+            return 0
+        elif pi_revision == '1 Module A':
+            return 0
+        elif pi_revision == '1 Module B+':
+            return 1
+        elif pi_revision == '1 Module A+':
+            return 0
+        elif pi_revision == '2 Module B':
+            return 1
+        elif pi_revision == '3 Module B':
+            return 1
+
+    def _get_pi_revision(self):
         "Gets the version number of the Raspberry Pi board"
         # Courtesy quick2wire-python-api
         # https://github.com/quick2wire/quick2wire-python-api
@@ -59,24 +76,28 @@ class PWM(object):
             for line in f:
                 if line.startswith('Revision'):
                     if line[11:-1] in self.RPI_REVISION_0:
-                        return 0
+                        return '0'
                     elif line[11:-1] in self.RPI_REVISION_1_MODULE_B:
-                        return 0
+                        return '1 Module B'
                     elif line[11:-1] in self.RPI_REVISION_1_MODULE_A:
-                        return 0
+                        return '1 Module A'
                     elif line[11:-1] in self.RPI_REVISION_1_MODULE_BP:
-                        return 1
+                        return '1 Module B+'
                     elif line[11:-1] in self.RPI_REVISION_1_MODULE_AP:
-                        return 0
+                        return '1 Module A+'
                     elif line[11:-1] in self.RPI_REVISION_2:
-                        return 1
+                        return '2 Module B'
                     elif line[11:-1] in self.RPI_REVISION_3:
-                        return 1
+                        return '3 Module B'
                     else:
-                        return line[11:-1]
-        except:
+                        print "Error. Pi revision didn't recognize, module number: %s" % line[11:-1]
+                        print 'Exiting...'
+                        quit()
+        except Exception, e:
             f.close()
-            return 'Open file error'
+            print e
+            print 'Exiting...'
+            quit()
         finally:
             f.close()
 
@@ -110,24 +131,60 @@ class PWM(object):
         try:
             self.bus.write_byte_data(self.address, reg, value)
         except Exception, i:
-            if not self._check_i2c():
-                print i
+            print i
+            self._check_i2c()
 
     def _read_byte_data(self, reg):
         '''Read data from I2C with self.address'''
         if self._DEBUG:
             print self._DEBUG_INFO, 'Reading value from %2X' % reg
         try:
-        	results = self.bus.read_byte_data(self.address, reg)
-        	return results
+            results = self.bus.read_byte_data(self.address, reg)
+            return results
         except Exception, i:
-            if not self._check_i2c():
-                print i
+            print i
+            self._check_i2c()
 
     def _check_i2c(self):
         import commands
+        bus_number = self._get_bus_number()
+        print "\nYour Pi Rivision is: %s" % self._get_pi_revision()
+        print "I2C bus number is: %s" % bus_number
+        print "Checking I2C device:"
+        cmd = "ls /dev/i2c-%d" % bus_number
+        output = commands.getoutput(cmd)
+        print 'Commands "%s" output:' % cmd
+        print output
+        if '/dev/i2c-%d' % bus_number in output.split(' '):
+            print "I2C device setup OK"
+        else:
+            print "Seems like I2C have not been set, Use 'sudo raspi-config' to set I2C"
         cmd = "i2cdetect -y %s" % self.bus_number
-        status, output = commans.getstatusoutput(cmd)
+        output = commands.getoutput(cmd)
+        print "Your PCA9685 address is set to 0x%02X" % self.address
+        print "i2cdetect output:"
+        print output
+        outputs = output.split('\n')[1:]
+        addresses = []
+        for tmp_addresses in outputs:
+            tmp_addresses = tmp_addresses.split(':')[1]
+            tmp_addresses = tmp_addresses.strip().split(' ')
+            for address in tmp_addresses:
+                if address != '--':
+                    addresses.append(address)
+        print "Conneceted i2c device:"
+        if addresses == []:
+            print "None"
+        else:
+            for address in addresses:
+                print "  0x%s" % address
+        if "%02X" % self.address in addresses:
+            print "Wierd, I2C device is connected, Try to run the program again, If problem stills, email this information to support@sunfounder.com"
+        else:
+            print "Device is missing."
+            print "Check the address or wiring of PCA9685 Server driver, or email this information to support@sunfounder.com"
+            print 'exiting...'
+        quit()
 
     @property
     def frequency(self):

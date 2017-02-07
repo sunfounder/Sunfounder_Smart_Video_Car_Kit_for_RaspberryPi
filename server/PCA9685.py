@@ -158,7 +158,7 @@ class PWM(object):
         if '/dev/i2c-%d' % bus_number in output.split(' '):
             print "I2C device setup OK"
         else:
-            print "Seems like I2C have not been set, Use 'sudo raspi-config' to set I2C"
+            print "Seems like I2C has not been set. Use 'sudo raspi-config' to set I2C"
         cmd = "i2cdetect -y %s" % self.bus_number
         output = commands.getoutput(cmd)
         print "Your PCA9685 address is set to 0x%02X" % self.address
@@ -179,11 +179,11 @@ class PWM(object):
             for address in addresses:
                 print "  0x%s" % address
         if "%02X" % self.address in addresses:
-            print "Wierd, I2C device is connected, Try to run the program again, If problem stills, email this information to support@sunfounder.com"
+            print "Wierd, I2C device is connected. Try to run the program again. If the problem's still, email the error message to service@sunfounder.com"
         else:
             print "Device is missing."
-            print "Check the address or wiring of PCA9685 Server driver, or email this information to support@sunfounder.com"
-            print 'exiting...'
+            print "Check the address or wiring of PCA9685 servo driver, or email the error message to service@sunfounder.com"
+            print 'Exiting...'
         quit()
 
     @property

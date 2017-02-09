@@ -31,9 +31,14 @@ def setSpeed(speed):
 	pwm.write(EN_M0, 0, speed)
 	pwm.write(EN_M1, 0, speed)
 
-def setup():
+def setup(busnum=None):
 	global forward0, forward1, backward1, backward0
 	global pwm
+	if busnum == None:
+		pwm = servo.PWM()                  # Initialize the servo controller.
+	else:
+		pwm = servo.PWM(bus_number=busnum) # Initialize the servo controller.
+
 	pwm = pwm.PWM()
 	pwm.frequency = 60
 	forward0 = 'True'

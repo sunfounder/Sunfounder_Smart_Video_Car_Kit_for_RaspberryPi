@@ -8,7 +8,7 @@ MaxPulse = 700
 Current_x = 0
 Current_y = 0
 
-def setup():
+def setup(busnum=None):
 	global Xmin, Ymin, Xmax, Ymax, home_x, home_y, pwm
 	offset_x = 0
 	offset_y = 0
@@ -28,7 +28,10 @@ def setup():
 	Ymax = MaxPulse + offset_y
 	home_x = (Xmax + Xmin)/2
 	home_y = Ymin + 80
-	pwm = servo.PWM()           # Initialize the servo controller. 
+	if busnum == None:
+		pwm = servo.PWM()                  # Initialize the servo controller.
+	else:
+		pwm = servo.PWM(bus_number=busnum) # Initialize the servo controller.
 	pwm.frequency = 60
 
 # ==========================================================================================

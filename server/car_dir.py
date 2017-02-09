@@ -5,7 +5,7 @@ import time                # Import necessary modules
 def Map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-def setup():
+def setup(busnum=None):
 	global leftPWM, rightPWM, homePWM, pwm
 	leftPWM = 400
 	homePWM = 450
@@ -20,7 +20,10 @@ def setup():
 	leftPWM += offset
 	homePWM += offset
 	rightPWM += offset
-	pwm = servo.PWM()         # Initialize the servo controller.
+	if busnum == None:
+		pwm = servo.PWM()                  # Initialize the servo controller.
+	else:
+		pwm = servo.PWM(bus_number=busnum) # Initialize the servo controller.
 	pwm.frequency = 60
 
 # ==========================================================================================

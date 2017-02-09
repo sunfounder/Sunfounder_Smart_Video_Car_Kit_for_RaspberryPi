@@ -8,6 +8,8 @@ from time import ctime          # Import necessary modules
 
 ctrl_cmd = ['forward', 'backward', 'left', 'right', 'stop', 'read cpu_temp', 'home', 'distance', 'x+', 'x-', 'y+', 'y-', 'xy_home']
 
+busnum = 1          # Edit busnum to 0, if you uses Raspberry Pi 1 or 0
+
 HOST = ''           # The variable of HOST is null, so the function bind( ) can be bound to all valid addresses.
 PORT = 21567
 BUFSIZ = 1024       # Size of the buffer
@@ -18,9 +20,9 @@ tcpSerSock.bind(ADDR)    # Bind the IP address and port number of the server.
 tcpSerSock.listen(5)     # The parameter of listen() defines the number of connections permitted at one time. Once the 
                          # connections are full, others will be rejected. 
 
-video_dir.setup()
-car_dir.setup()
-motor.setup()     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
+video_dir.setup(busnum=busnum)
+car_dir.setup(busnum=busnum)
+motor.setup(busnum=busnum)     # Initialize the Raspberry Pi GPIO connected to the DC motor. 
 video_dir.home_x_y()
 car_dir.home()
 

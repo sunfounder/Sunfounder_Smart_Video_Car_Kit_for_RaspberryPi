@@ -16,6 +16,8 @@ tcpSerSock.bind(ADDR)    # Bind the IP address and port number of the server.
 tcpSerSock.listen(5)     # The parameter of listen() defines the number of connections permitted at one time. Once the 
                          # connections are full, others will be rejected. 
 
+busnum = 1          # Edit busnum to 0, if you uses Raspberry Pi 1 or 0
+
 def setup():
 	global offset_x,  offset_y, offset, forward0, forward1
 	offset_x = 0
@@ -42,9 +44,9 @@ def setup():
 				print 'turning1 =', forward1
 	except:
 		print 'no config file, set config to original'
-	video_dir.setup()
-	car_dir.setup()
-	motor.setup() 
+	video_dir.setup(busnum=busnum)
+	car_dir.setup(busnum=busnum)
+	motor.setup(busnum=busnum) 
 	video_dir.calibrate(offset_x, offset_y)
 	car_dir.calibrate(offset)
 

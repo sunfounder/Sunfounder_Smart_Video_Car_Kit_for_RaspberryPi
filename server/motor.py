@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
-import PCA9685 as pwm
+import PCA9685 as p
 import time    # Import necessary modules
 
 # ===========================================================================
@@ -35,9 +35,9 @@ def setup(busnum=None):
 	global forward0, forward1, backward1, backward0
 	global pwm
 	if busnum == None:
-		pwm = pwm.PWM()                  # Initialize the servo controller.
+		pwm = p.PWM()                  # Initialize the servo controller.
 	else:
-		pwm = pwm.PWM(bus_number=busnum) # Initialize the servo controller.
+		pwm = p.PWM(bus_number=busnum) # Initialize the servo controller.
 
 	pwm = pwm.PWM()
 	pwm.frequency = 60

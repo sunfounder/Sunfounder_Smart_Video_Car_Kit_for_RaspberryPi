@@ -39,7 +39,6 @@ def setup(busnum=None):
 	else:
 		pwm = p.PWM(bus_number=busnum) # Initialize the servo controller.
 
-	pwm = pwm.PWM()
 	pwm.frequency = 60
 	forward0 = 'True'
 	forward1 = 'True'

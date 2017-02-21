@@ -1,0 +1,78 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="global_declaration" id="1" inline="false" x="248" y="2">
+    <field name="NAME">host</field>
+    <value name="VALUE">
+      <block type="text" id="2">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="3" x="-45" y="58">
+    <mutation component_type="Form" instance_name="Settings_Real" event_name="BackPressed"></mutation>
+    <field name="COMPONENT_SELECTOR">Settings_Real</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="4" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="5">
+            <field name="TEXT">Screen2</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="6" x="578" y="58">
+    <mutation component_type="Form" instance_name="Settings_Real" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Settings_Real</field>
+    <statement name="DO">
+      <block type="component_set_get" id="7" inline="false">
+        <mutation component_type="HorizontalArrangement" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="HorizontalArrangement1"></mutation>
+        <field name="COMPONENT_SELECTOR">HorizontalArrangement1</field>
+        <field name="PROP">BackgroundColor</field>
+        <value name="VALUE">
+          <block type="color_blue" id="8">
+            <field name="COLOR">#3366ff</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="9" x="-43" y="144">
+    <mutation component_type="Button" instance_name="Homepage" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Homepage</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreenWithStartValue" id="10" inline="false">
+        <value name="SCREENNAME">
+          <block type="text" id="11">
+            <field name="TEXT">WebView</field>
+          </block>
+        </value>
+        <value name="STARTVALUE">
+          <block type="text" id="12">
+            <field name="TEXT">http://www.sunfounder.com</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="13" x="-25" y="258">
+    <mutation component_type="Button" instance_name="Button1" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Button1</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreenWithStartValue" id="14" inline="false">
+        <value name="SCREENNAME">
+          <block type="text" id="15">
+            <field name="TEXT">WebView</field>
+          </block>
+        </value>
+        <value name="STARTVALUE">
+          <block type="component_set_get" id="16">
+            <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="Label7"></mutation>
+            <field name="COMPONENT_SELECTOR">Label7</field>
+            <field name="PROP">Text</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="158" language-version="20"></yacodeblocks>
+</xml>

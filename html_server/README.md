@@ -26,3 +26,6 @@ Begin calibration by clicking on the dot in a circle at the corner. Note: the ca
  - Control the car forward/backward by the up/down arrow on the left.
  - Control the camera pan/tilt by the up/down/left/right arrow on the right, and set the camera back to the default position by the middle dot.
  - Change the motor speed by the bar under the camera view
+
+####App:
+The Android app is build under [MIT App Inventor 2](http://ai2.appinventor.mit.edu/), so no detail source code, just a project folder, which you can edit it with App Inventor 2. The project files is under Android_App folder.

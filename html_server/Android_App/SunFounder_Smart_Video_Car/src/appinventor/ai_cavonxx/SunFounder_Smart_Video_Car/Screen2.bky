@@ -1,0 +1,1276 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="50" y="1930">
+    <mutation component_type="Button" instance_name="Calibration" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Calibration</field>
+    <statement name="DO">
+      <block type="component_set_get" id="2" inline="false">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DeBug"></mutation>
+        <field name="COMPONENT_SELECTOR">DeBug</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text" id="3">
+            <field name="TEXT">Opening Settings</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_openAnotherScreenWithStartValue" id="4" inline="false">
+            <value name="SCREENNAME">
+              <block type="text" id="5">
+                <field name="TEXT">Settings</field>
+              </block>
+            </value>
+            <value name="STARTVALUE">
+              <block type="lexical_variable_get" id="6">
+                <field name="VAR">global host</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="7" collapsed="true" x="1609" y="1886">
+    <mutation component_type="Button" instance_name="CameraLeft" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">CameraLeft</field>
+    <statement name="DO">
+      <block type="controls_if" id="8" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="9" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="10">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="11" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="12" inline="false">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="13">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="14">
+                    <field name="TEXT">/camera/decrease/x</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="15">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="16" collapsed="true" x="652" y="1961">
+    <mutation component_type="Button" instance_name="CameraRight" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">CameraRight</field>
+    <statement name="DO">
+      <block type="controls_if" id="17" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="18" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="19">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="20" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="21" inline="false">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="22">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="23">
+                    <field name="TEXT">/camera/increase/x</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="24">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="25" collapsed="true" x="959" y="1958">
+    <mutation component_type="Button" instance_name="CameraDown" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">CameraDown</field>
+    <statement name="DO">
+      <block type="controls_if" id="26" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="27" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="28">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="29" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="30" inline="false">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="31">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="32">
+                    <field name="TEXT">/camera/decrease/y</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="33">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="34" collapsed="true" x="1275" y="1958">
+    <mutation component_type="Button" instance_name="CameraHome" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">CameraHome</field>
+    <statement name="DO">
+      <block type="controls_if" id="35" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="36" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="37">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="38" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="39" inline="false">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="40">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="41">
+                    <field name="TEXT">/camera/home</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="42">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="43" inline="false" collapsed="true" x="951" y="2009">
+    <mutation>
+      <arg name="x"></arg>
+      <arg name="input_MIN"></arg>
+      <arg name="input_MAX"></arg>
+      <arg name="output_MIN"></arg>
+      <arg name="output_MAX"></arg>
+    </mutation>
+    <field name="NAME">Map</field>
+    <field name="VAR0">x</field>
+    <field name="VAR1">input_MIN</field>
+    <field name="VAR2">input_MAX</field>
+    <field name="VAR3">output_MIN</field>
+    <field name="VAR4">output_MAX</field>
+    <value name="RETURN">
+      <block type="math_add" id="44" inline="true">
+        <mutation items="2"></mutation>
+        <value name="NUM0">
+          <block type="math_division" id="45" inline="true">
+            <value name="A">
+              <block type="math_multiply" id="46" inline="true">
+                <mutation items="2"></mutation>
+                <value name="NUM0">
+                  <block type="math_subtract" id="47" inline="true">
+                    <value name="A">
+                      <block type="lexical_variable_get" id="48">
+                        <field name="VAR">x</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="lexical_variable_get" id="49">
+                        <field name="VAR">input_MIN</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="NUM1">
+                  <block type="math_subtract" id="50" inline="true">
+                    <value name="A">
+                      <block type="lexical_variable_get" id="51">
+                        <field name="VAR">output_MAX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="lexical_variable_get" id="52">
+                        <field name="VAR">output_MIN</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_subtract" id="53" inline="true">
+                <value name="A">
+                  <block type="lexical_variable_get" id="54">
+                    <field name="VAR">input_MAX</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="lexical_variable_get" id="55">
+                    <field name="VAR">input_MIN</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="NUM1">
+          <block type="lexical_variable_get" id="56">
+            <field name="VAR">output_MIN</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="57" inline="false" collapsed="true" x="1304" y="2009">
+    <field name="NAME">server_address</field>
+    <value name="VALUE">
+      <block type="text" id="58">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="59" inline="false" collapsed="true" x="1599" y="2009">
+    <field name="NAME">video_address</field>
+    <value name="VALUE">
+      <block type="text" id="60">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="61" inline="false" collapsed="true" x="642" y="2060">
+    <field name="NAME">command</field>
+    <value name="VALUE">
+      <block type="math_number" id="62">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="63" collapsed="true" x="2244" y="1987">
+    <mutation component_type="Button" instance_name="CameraUp" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">CameraUp</field>
+    <statement name="DO">
+      <block type="controls_if" id="64" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="65" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="66">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="67" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="68" inline="false">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="69">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="70">
+                    <field name="TEXT">/camera/increase/y</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="71">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="72" collapsed="true" x="1894" y="2009">
+    <mutation component_type="Form" instance_name="Screen2" event_name="BackPressed"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen2</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="73" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="74">
+            <field name="TEXT">Screen1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="75" inline="false" collapsed="true" x="951" y="2060">
+    <field name="NAME">stop_flag</field>
+    <value name="VALUE">
+      <block type="logic_boolean" id="76">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="77" inline="false" collapsed="true" x="1246" y="2060">
+    <field name="NAME">motor_command</field>
+    <value name="VALUE">
+      <block type="text" id="78">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="79" inline="false" collapsed="true" x="1540" y="2060">
+    <field name="NAME">host</field>
+    <value name="VALUE">
+      <block type="text" id="80">
+        <field name="TEXT">192.168.0.140</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="81" inline="false" collapsed="true" x="1857" y="2060">
+    <field name="NAME">turing_command</field>
+    <value name="VALUE">
+      <block type="text" id="82">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="83" inline="false" collapsed="true" x="951" y="2111">
+    <field name="NAME">Speed</field>
+    <value name="VALUE">
+      <block type="math_number" id="84">
+        <field name="NUM">50</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="85" inline="false" collapsed="true" x="1864" y="2111">
+    <field name="NAME">error</field>
+    <value name="VALUE">
+      <block type="logic_false" id="86">
+        <field name="BOOL">FALSE</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="87" inline="false" collapsed="true" x="959" y="2162">
+    <field name="NAME">direction</field>
+    <value name="VALUE">
+      <block type="math_number" id="88">
+        <field name="NUM">128</field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="89" collapsed="true" x="1589" y="2147">
+    <mutation component_type="Form" instance_name="Screen2" event_name="ErrorOccurred"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen2</field>
+    <statement name="DO">
+      <block type="controls_if" id="90" inline="false">
+        <value name="IF0">
+          <block type="math_compare" id="91" inline="true">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="lexical_variable_get" id="92">
+                <mutation>
+                  <eventparam name="errorNumber"></eventparam>
+                </mutation>
+                <field name="VAR">errorNumber</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="93">
+                <field name="NUM">1101</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="lexical_variable_set" id="94" inline="false">
+            <field name="VAR">global error</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="95">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="96" inline="false">
+                <mutation component_type="Notifier" method_name="ShowChooseDialog" is_generic="false" instance_name="Notifier1"></mutation>
+                <field name="COMPONENT_SELECTOR">Notifier1</field>
+                <value name="ARG0">
+                  <block type="text_join" id="97" inline="false">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="98">
+                        <field name="TEXT">Network error with ip address</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="lexical_variable_get" id="99">
+                        <field name="VAR">global host</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="text" id="100">
+                    <field name="TEXT">Network Error</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="text" id="101">
+                    <field name="TEXT">Retry</field>
+                  </block>
+                </value>
+                <value name="ARG3">
+                  <block type="text" id="102">
+                    <field name="TEXT">Exit</field>
+                  </block>
+                </value>
+                <value name="ARG4">
+                  <block type="logic_boolean" id="103">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="104" inline="false">
+                    <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DeBug"></mutation>
+                    <field name="COMPONENT_SELECTOR">DeBug</field>
+                    <field name="PROP">Text</field>
+                    <value name="VALUE">
+                      <block type="lexical_variable_get" id="105">
+                        <mutation>
+                          <eventparam name="message"></eventparam>
+                        </mutation>
+                        <field name="VAR">message</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="106" x="2034" y="2169">
+    <mutation component_type="Slider" instance_name="SpeedSlider" event_name="PositionChanged"></mutation>
+    <field name="COMPONENT_SELECTOR">SpeedSlider</field>
+    <statement name="DO">
+      <block type="controls_if" id="107" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="108" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="109">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="110" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="111" inline="false">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="112">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="113">
+                    <field name="TEXT">/motor/set/speed/</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="lexical_variable_get" id="114">
+                    <mutation>
+                      <eventparam name="thumbPosition"></eventparam>
+                    </mutation>
+                    <field name="VAR">thumbPosition</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="115" inline="false">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DeBug"></mutation>
+                <field name="COMPONENT_SELECTOR">DeBug</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text_join" id="116" inline="false">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="117">
+                        <field name="TEXT">Set speed to </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="lexical_variable_get" id="118">
+                        <mutation>
+                          <eventparam name="thumbPosition"></eventparam>
+                        </mutation>
+                        <field name="VAR">thumbPosition</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_method" id="119">
+                    <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Web1</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="120" x="-79" y="2289">
+    <mutation component_type="Notifier" instance_name="Notifier1" event_name="AfterChoosing"></mutation>
+    <field name="COMPONENT_SELECTOR">Notifier1</field>
+    <statement name="DO">
+      <block type="controls_if" id="121" inline="false">
+        <mutation elseif="1"></mutation>
+        <value name="IF0">
+          <block type="text_compare" id="122" inline="true">
+            <field name="OP">EQUAL</field>
+            <value name="TEXT1">
+              <block type="lexical_variable_get" id="123">
+                <mutation>
+                  <eventparam name="choice"></eventparam>
+                </mutation>
+                <field name="VAR">choice</field>
+              </block>
+            </value>
+            <value name="TEXT2">
+              <block type="text" id="124">
+                <field name="TEXT">Exit</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_openAnotherScreen" id="125" inline="false">
+            <value name="SCREEN">
+              <block type="text" id="126">
+                <field name="TEXT">Screen1</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="text_compare" id="127" inline="true">
+            <field name="OP">EQUAL</field>
+            <value name="TEXT1">
+              <block type="lexical_variable_get" id="128">
+                <mutation>
+                  <eventparam name="choice"></eventparam>
+                </mutation>
+                <field name="VAR">choice</field>
+              </block>
+            </value>
+            <value name="TEXT2">
+              <block type="text" id="129">
+                <field name="TEXT">Retry</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="lexical_variable_set" id="130" inline="false">
+            <field name="VAR">global error</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="131">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="132" inline="false">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DeBug"></mutation>
+                <field name="COMPONENT_SELECTOR">DeBug</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="133">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="134" x="1031" y="2239">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="controls_if" id="135" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="136" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="137">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="138" inline="false">
+            <mutation component_type="Image" set_or_get="set" property_name="Picture" is_generic="false" instance_name="Image1"></mutation>
+            <field name="COMPONENT_SELECTOR">Image1</field>
+            <field name="PROP">Picture</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="139">
+                <field name="VAR">global video_address</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="140" inline="false" collapsed="true" x="1555" y="2213">
+    <field name="NAME">Motor_action</field>
+    <value name="VALUE">
+      <block type="math_number" id="141">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="142" x="626" y="2275">
+    <mutation component_type="Button" instance_name="Forward" event_name="TouchDown"></mutation>
+    <field name="COMPONENT_SELECTOR">Forward</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="143" inline="false">
+        <field name="VAR">global Motor_action</field>
+        <value name="VALUE">
+          <block type="math_number" id="144">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="145" x="2363" y="2218">
+    <mutation component_type="OrientationSensor" instance_name="OrientationSensor1" event_name="OrientationChanged"></mutation>
+    <field name="COMPONENT_SELECTOR">OrientationSensor1</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="146" inline="false">
+        <field name="VAR">global direction</field>
+        <value name="VALUE">
+          <block type="procedures_callreturn" id="147" inline="false">
+            <mutation name="Map">
+              <arg name="x"></arg>
+              <arg name="input_MIN"></arg>
+              <arg name="input_MAX"></arg>
+              <arg name="output_MIN"></arg>
+              <arg name="output_MAX"></arg>
+            </mutation>
+            <field name="PROCNAME">Map</field>
+            <value name="ARG0">
+              <block type="controls_choose" id="148" inline="false">
+                <value name="TEST">
+                  <block type="math_compare" id="149" inline="true">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="150">
+                        <mutation>
+                          <eventparam name="roll"></eventparam>
+                        </mutation>
+                        <field name="VAR">roll</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="151">
+                        <field name="NUM">-60</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="THENRETURN">
+                  <block type="math_number" id="152">
+                    <field name="NUM">-60</field>
+                  </block>
+                </value>
+                <value name="ELSERETURN">
+                  <block type="controls_choose" id="153" inline="false">
+                    <value name="TEST">
+                      <block type="math_compare" id="154" inline="true">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="lexical_variable_get" id="155">
+                            <mutation>
+                              <eventparam name="roll"></eventparam>
+                            </mutation>
+                            <field name="VAR">roll</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="156">
+                            <field name="NUM">60</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="THENRETURN">
+                      <block type="math_number" id="157">
+                        <field name="NUM">60</field>
+                      </block>
+                    </value>
+                    <value name="ELSERETURN">
+                      <block type="lexical_variable_get" id="158">
+                        <mutation>
+                          <eventparam name="roll"></eventparam>
+                        </mutation>
+                        <field name="VAR">roll</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="math_number" id="159">
+                <field name="NUM">-60</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="math_number" id="160">
+                <field name="NUM">60</field>
+              </block>
+            </value>
+            <value name="ARG3">
+              <block type="math_number" id="161">
+                <field name="NUM">20</field>
+              </block>
+            </value>
+            <value name="ARG4">
+              <block type="math_number" id="162">
+                <field name="NUM">235</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="163" x="627" y="2349">
+    <mutation component_type="Button" instance_name="Backward" event_name="TouchUp"></mutation>
+    <field name="COMPONENT_SELECTOR">Backward</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="164" inline="false">
+        <field name="VAR">global Motor_action</field>
+        <value name="VALUE">
+          <block type="math_number" id="165">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="166" x="1652" y="2311">
+    <mutation component_type="Clock" instance_name="Clock2" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock2</field>
+    <statement name="DO">
+      <block type="controls_if" id="167" inline="false">
+        <value name="IF0">
+          <block type="logic_negate" id="168" inline="false">
+            <value name="BOOL">
+              <block type="lexical_variable_get" id="169">
+                <field name="VAR">global error</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="170" inline="false">
+            <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+            <field name="COMPONENT_SELECTOR">Web1</field>
+            <field name="PROP">Url</field>
+            <value name="VALUE">
+              <block type="text_join" id="171" inline="false">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="lexical_variable_get" id="172">
+                    <field name="VAR">global server_address</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="173">
+                    <field name="TEXT">/turning/</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="math_round" id="174" inline="false">
+                    <field name="OP">ROUND</field>
+                    <value name="NUM">
+                      <block type="lexical_variable_get" id="175">
+                        <field name="VAR">global direction</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="176">
+                <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                <field name="COMPONENT_SELECTOR">Web1</field>
+                <next>
+                  <block type="controls_if" id="177" inline="false">
+                    <mutation elseif="2"></mutation>
+                    <value name="IF0">
+                      <block type="math_compare" id="178" inline="true">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="lexical_variable_get" id="179">
+                            <field name="VAR">global Motor_action</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="180">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="component_set_get" id="181" inline="false">
+                        <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Web1</field>
+                        <field name="PROP">Url</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="182" inline="false">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="lexical_variable_get" id="183">
+                                <field name="VAR">global server_address</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="text" id="184">
+                                <field name="TEXT">/motor/stop/</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_method" id="185">
+                            <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                            <field name="COMPONENT_SELECTOR">Web1</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="math_compare" id="186" inline="true">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="lexical_variable_get" id="187">
+                            <field name="VAR">global Motor_action</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="188">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="component_set_get" id="189" inline="false">
+                        <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Web1</field>
+                        <field name="PROP">Url</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="190" inline="false">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="lexical_variable_get" id="191">
+                                <field name="VAR">global server_address</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="text" id="192">
+                                <field name="TEXT">/motor/forward/</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_method" id="193">
+                            <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                            <field name="COMPONENT_SELECTOR">Web1</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF2">
+                      <block type="math_compare" id="194" inline="true">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="lexical_variable_get" id="195">
+                            <field name="VAR">global Motor_action</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="196">
+                            <field name="NUM">-1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO2">
+                      <block type="component_set_get" id="197" inline="false">
+                        <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Web1</field>
+                        <field name="PROP">Url</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="198" inline="false">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="lexical_variable_get" id="199">
+                                <field name="VAR">global server_address</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="text" id="200">
+                                <field name="TEXT">/motor/backward/</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_method" id="201">
+                            <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                            <field name="COMPONENT_SELECTOR">Web1</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="202" x="632" y="2424">
+    <mutation component_type="Button" instance_name="Backward" event_name="TouchDown"></mutation>
+    <field name="COMPONENT_SELECTOR">Backward</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="203" inline="false">
+        <field name="VAR">global Motor_action</field>
+        <value name="VALUE">
+          <block type="math_number" id="204">
+            <field name="NUM">-1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="205" x="1013" y="2428">
+    <mutation component_type="Form" instance_name="Screen2" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen2</field>
+    <statement name="DO">
+      <block type="controls_if" id="206" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="text_compare" id="207" inline="true">
+            <field name="OP">GT</field>
+            <value name="TEXT1">
+              <block type="controls_getStartValue" id="208"></block>
+            </value>
+            <value name="TEXT2">
+              <block type="text" id="209">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="lexical_variable_set" id="210" inline="false">
+            <field name="VAR">global host</field>
+            <value name="VALUE">
+              <block type="controls_getStartValue" id="211"></block>
+            </value>
+            <next>
+              <block type="component_method" id="212" inline="false">
+                <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="text" id="213">
+                    <field name="TEXT">host</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="lexical_variable_get" id="214">
+                    <field name="VAR">global host</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="lexical_variable_set" id="215" inline="false">
+            <field name="VAR">global host</field>
+            <value name="VALUE">
+              <block type="component_method" id="216" inline="false">
+                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="text" id="217">
+                    <field name="TEXT">host</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="text" id="218">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="lexical_variable_set" id="219" inline="false">
+            <field name="VAR">global video_address</field>
+            <value name="VALUE">
+              <block type="text_join" id="220" inline="false">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="221">
+                    <field name="TEXT">http://</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="lexical_variable_get" id="222">
+                    <field name="VAR">global host</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="223">
+                    <field name="TEXT">:8080/?action=snapshot</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="lexical_variable_set" id="224" inline="false">
+                <field name="VAR">global server_address</field>
+                <value name="VALUE">
+                  <block type="text_join" id="225" inline="false">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="226">
+                        <field name="TEXT">http://</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="lexical_variable_get" id="227">
+                        <field name="VAR">global host</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="228">
+                        <field name="TEXT">:8000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="229" inline="false">
+                    <mutation component_type="Web" set_or_get="set" property_name="Url" is_generic="false" instance_name="Web1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Web1</field>
+                    <field name="PROP">Url</field>
+                    <value name="VALUE">
+                      <block type="text_join" id="230" inline="false">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="lexical_variable_get" id="231">
+                            <field name="VAR">global server_address</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="text" id="232">
+                            <field name="TEXT">/runmode</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_method" id="233">
+                        <mutation component_type="Web" method_name="Get" is_generic="false" instance_name="Web1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Web1</field>
+                        <next>
+                          <block type="component_set_get" id="234" inline="false">
+                            <mutation component_type="Slider" set_or_get="set" property_name="ColorLeft" is_generic="false" instance_name="SpeedSlider"></mutation>
+                            <field name="COMPONENT_SELECTOR">SpeedSlider</field>
+                            <field name="PROP">ColorLeft</field>
+                            <value name="VALUE">
+                              <block type="color_blue" id="235">
+                                <field name="COLOR">#3366ff</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="component_set_get" id="236" inline="false">
+                                <mutation component_type="Slider" set_or_get="set" property_name="ColorRight" is_generic="false" instance_name="SpeedSlider"></mutation>
+                                <field name="COMPONENT_SELECTOR">SpeedSlider</field>
+                                <field name="PROP">ColorRight</field>
+                                <value name="VALUE">
+                                  <block type="color_blue" id="237">
+                                    <field name="COLOR">#999999</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="component_set_get" id="238" inline="false">
+                                    <mutation component_type="HorizontalArrangement" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="TopBarLeft"></mutation>
+                                    <field name="COMPONENT_SELECTOR">TopBarLeft</field>
+                                    <field name="PROP">BackgroundColor</field>
+                                    <value name="VALUE">
+                                      <block type="color_blue" id="239">
+                                        <field name="COLOR">#3366ff</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="component_set_get" id="240" inline="false">
+                                        <mutation component_type="HorizontalArrangement" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="TopBarRight"></mutation>
+                                        <field name="COMPONENT_SELECTOR">TopBarRight</field>
+                                        <field name="PROP">BackgroundColor</field>
+                                        <value name="VALUE">
+                                          <block type="color_blue" id="241">
+                                            <field name="COLOR">#3366ff</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="component_set_get" id="242" inline="false">
+                                            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DeBug"></mutation>
+                                            <field name="COMPONENT_SELECTOR">DeBug</field>
+                                            <field name="PROP">Text</field>
+                                            <value name="VALUE">
+                                              <block type="text" id="243">
+                                                <field name="TEXT">Ready!</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="244" x="636" y="2504">
+    <mutation component_type="Button" instance_name="Forward" event_name="TouchUp"></mutation>
+    <field name="COMPONENT_SELECTOR">Forward</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="245" inline="false">
+        <field name="VAR">global Motor_action</field>
+        <value name="VALUE">
+          <block type="math_number" id="246">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="247" x="404" y="2594">
+    <mutation component_type="Button" instance_name="Settings" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Settings</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="248" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="249">
+            <field name="TEXT">Settings_Real</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="158" language-version="20"></yacodeblocks>
+</xml>

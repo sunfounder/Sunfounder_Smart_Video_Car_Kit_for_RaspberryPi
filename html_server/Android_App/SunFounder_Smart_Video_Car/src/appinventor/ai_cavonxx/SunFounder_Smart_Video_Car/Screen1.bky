@@ -1,0 +1,293 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="global_declaration" id="1" inline="false" x="-847" y="8">
+    <field name="NAME">Begin_Flag</field>
+    <value name="VALUE">
+      <block type="logic_boolean" id="2">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="3" inline="false" x="-851" y="43">
+    <field name="NAME">Last_IP</field>
+    <value name="VALUE">
+      <block type="text" id="4">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="5" x="-155" y="36">
+    <mutation component_type="Form" instance_name="Screen1" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="6" inline="false">
+        <mutation component_type="VerticalArrangement" set_or_get="set" property_name="Visible" is_generic="false" instance_name="VerticalArrangement6"></mutation>
+        <field name="COMPONENT_SELECTOR">VerticalArrangement6</field>
+        <field name="PROP">Visible</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="7">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="8" inline="false">
+            <mutation component_type="VerticalArrangement" set_or_get="set" property_name="Visible" is_generic="false" instance_name="VerticalArrangement5"></mutation>
+            <field name="COMPONENT_SELECTOR">VerticalArrangement5</field>
+            <field name="PROP">Visible</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="9">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <next>
+              <block type="lexical_variable_set" id="10" inline="false">
+                <field name="VAR">global Last_IP</field>
+                <value name="VALUE">
+                  <block type="component_method" id="11" inline="false">
+                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                    <value name="ARG0">
+                      <block type="text" id="12">
+                        <field name="TEXT">Last_ip</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="text" id="13">
+                        <field name="TEXT">0.0.0.0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="14" inline="false">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="Hint" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Hint</field>
+                    <value name="VALUE">
+                      <block type="lexical_variable_get" id="15">
+                        <field name="VAR">global Last_IP</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_set_get" id="16" inline="false">
+                        <mutation component_type="HorizontalArrangement" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="HorizontalArrangement8"></mutation>
+                        <field name="COMPONENT_SELECTOR">HorizontalArrangement8</field>
+                        <field name="PROP">BackgroundColor</field>
+                        <value name="VALUE">
+                          <block type="color_black" id="17">
+                            <field name="COLOR">#3366ff</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="18" inline="false" x="-855" y="76">
+    <field name="NAME">start_value</field>
+    <value name="VALUE">
+      <block type="text" id="19">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="20" x="-858" y="108">
+    <mutation component_type="Button" instance_name="Button1" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Button1</field>
+    <statement name="DO">
+      <block type="component_method" id="21">
+        <mutation component_type="TextBox" method_name="HideKeyboard" is_generic="false" instance_name="TextBox1"></mutation>
+        <field name="COMPONENT_SELECTOR">TextBox1</field>
+        <next>
+          <block type="controls_if" id="22" inline="false">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="text_compare" id="23" inline="true">
+                <field name="OP">EQUAL</field>
+                <value name="TEXT1">
+                  <block type="component_set_get" id="24">
+                    <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Text</field>
+                  </block>
+                </value>
+                <value name="TEXT2">
+                  <block type="text" id="25">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="lexical_variable_set" id="26" inline="false">
+                <field name="VAR">global start_value</field>
+                <value name="VALUE">
+                  <block type="component_set_get" id="27">
+                    <mutation component_type="TextBox" set_or_get="get" property_name="Hint" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Hint</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="component_method" id="28" inline="false">
+                <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="text" id="29">
+                    <field name="TEXT">Last_ip</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="component_set_get" id="30">
+                    <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Text</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lexical_variable_set" id="31" inline="false">
+                    <field name="VAR">global start_value</field>
+                    <value name="VALUE">
+                      <block type="component_set_get" id="32">
+                        <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                        <field name="COMPONENT_SELECTOR">TextBox1</field>
+                        <field name="PROP">Text</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_openAnotherScreenWithStartValue" id="33" inline="false">
+                <value name="SCREENNAME">
+                  <block type="text" id="34">
+                    <field name="TEXT">Screen2</field>
+                  </block>
+                </value>
+                <value name="STARTVALUE">
+                  <block type="lexical_variable_get" id="35">
+                    <field name="VAR">global start_value</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="local_declaration_statement" id="36" inline="false" x="-155" y="303">
+    <mutation>
+      <localname name="time1"></localname>
+    </mutation>
+    <field name="VAR0">time1</field>
+    <value name="DECL0">
+      <block type="component_method" id="37">
+        <mutation component_type="Clock" method_name="Now" is_generic="false" instance_name="Clock1"></mutation>
+        <field name="COMPONENT_SELECTOR">Clock1</field>
+      </block>
+    </value>
+    <statement name="STACK">
+      <block type="local_declaration_statement" id="38" inline="false">
+        <mutation>
+          <localname name="flag"></localname>
+        </mutation>
+        <field name="VAR0">flag</field>
+        <statement name="STACK">
+          <block type="controls_while" id="39" inline="false">
+            <value name="TEST">
+              <block type="lexical_variable_get" id="40">
+                <field name="VAR">flag</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="41" x="-829" y="465">
+    <mutation component_type="Form" instance_name="Screen1" event_name="BackPressed"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen1</field>
+    <statement name="DO">
+      <block type="controls_closeApplication" id="42"></block>
+    </statement>
+  </block>
+  <block type="component_event" id="43" x="-153" y="487">
+    <mutation component_type="Button" instance_name="info" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">info</field>
+    <statement name="DO">
+      <block type="component_set_get" id="44" inline="false">
+        <mutation component_type="HorizontalArrangement" set_or_get="set" property_name="Visible" is_generic="false" instance_name="LoginDialog"></mutation>
+        <field name="COMPONENT_SELECTOR">LoginDialog</field>
+        <field name="PROP">Visible</field>
+        <value name="VALUE">
+          <block type="logic_negate" id="45" inline="false">
+            <value name="BOOL">
+              <block type="component_set_get" id="46">
+                <mutation component_type="HorizontalArrangement" set_or_get="get" property_name="Visible" is_generic="false" instance_name="LoginDialog"></mutation>
+                <field name="COMPONENT_SELECTOR">LoginDialog</field>
+                <field name="PROP">Visible</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="47" x="-1001" y="540">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="controls_if" id="48" inline="false">
+        <value name="IF0">
+          <block type="lexical_variable_get" id="49">
+            <field name="VAR">global Begin_Flag</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="50" inline="false">
+            <mutation component_type="VerticalArrangement" set_or_get="set" property_name="Visible" is_generic="false" instance_name="VerticalArrangement6"></mutation>
+            <field name="COMPONENT_SELECTOR">VerticalArrangement6</field>
+            <field name="PROP">Visible</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="51">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="52" inline="false">
+                <mutation component_type="VerticalArrangement" set_or_get="set" property_name="Visible" is_generic="false" instance_name="VerticalArrangement5"></mutation>
+                <field name="COMPONENT_SELECTOR">VerticalArrangement5</field>
+                <field name="PROP">Visible</field>
+                <value name="VALUE">
+                  <block type="logic_boolean" id="53">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lexical_variable_set" id="54" inline="false">
+                    <field name="VAR">global Begin_Flag</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="55">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="158" language-version="20"></yacodeblocks>
+</xml>

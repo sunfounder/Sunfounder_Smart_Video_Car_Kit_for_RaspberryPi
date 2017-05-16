@@ -14,7 +14,7 @@ Quick Links:
 ### About this kit:
 The SunFounder Smart Video Car Kit for Raspberry Pi is composed of Raspberry Pi, DC-DC Step-down Voltage Module, USB camera, DC motor driver, and PCA9685-based Servo Controller. From the perspective of software, the smart car is of client/server (C/S) structure. The TCP server program is run on Raspberry Pi for direct control of the car. And the video data are acquired and delivered via the open source software MGPJ-streamer in a real-time manner. The TCP client program is run on PC to send the control command. Both the client and server programs are developed in Python language. The smart car is developed based on the open-source hardware Raspberry Pi and integrates the knowledge of mechanics, electronics, and computer, thus having profound educational significance. 
 
-####*You can now control your Smart video car with an Android phone! (Details in `html_server/README.md`)*
+#### *You can now control your Smart video car with an Android phone! (Details in `html_server/README.md`)*
 Download the Android App from [Google Play](https://play.google.com/store/apps/details?id=appinventor.ai_cavonxx.SunFounder_Smart_Video_Car)
 
 #### Notice:
@@ -60,9 +60,9 @@ Before you run the client routine, you must first run the server routine.
 solved *IOError: "[Errno 2] No such file or directory"* problem for some Pi.
 
 <a id="trouble"></a>
-###Trouble Shootings:
+### Trouble Shootings:
 <a id="i2c_trouble"></a>
-####I2C Trouble
+#### I2C Trouble
 
 	IOError: [Errno 2] No such file or directory
 	
@@ -80,7 +80,7 @@ This normally means Raspberry Pi could not find the I2C device. So here's what y
  	And after `i2cdetect`, and you should see your Servo Controller's address: 0x48
 
 <a id="tkinter.tclerror"></a>
-####_tkinter.TclError
+#### _tkinter.TclError
 
     pi@raspberrypi:~/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/client $ sudo python cali_client.py
     Traceback (most recent call last):

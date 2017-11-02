@@ -191,7 +191,7 @@ class Sunfounder_I2C(object):
 
 if __name__ == '__main__':
   try:
-    bus = Sunfounder_I2C(address=0)
+    bus = Sunfounder_I2C(address=0, busnum=1)
     print "Default I2C bus is accessible"
   except:
     print "Error accessing default I2C bus"

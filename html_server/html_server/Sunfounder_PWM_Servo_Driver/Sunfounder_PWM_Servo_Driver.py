@@ -32,7 +32,7 @@ class PWM :
   __INVRT              = 0x10
   __OUTDRV             = 0x04
 
-  general_call_i2c = Sunfounder_I2C(0x00)
+  general_call_i2c = Sunfounder_I2C(0x00, busnum=1)
 
   @classmethod
   def softwareReset(cls):
@@ -40,7 +40,7 @@ class PWM :
     cls.general_call_i2c.writeRaw8(0x06)        # SWRST
 
   def __init__(self, address=0x40, debug=False):
-    self.i2c = Sunfounder_I2C(address)
+    self.i2c = Sunfounder_I2C(address, busnum=1)
     self.i2c.debug = debug
     self.address = address
     self.debug = debug

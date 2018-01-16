@@ -6,7 +6,7 @@ MinPulse = 200
 MaxPulse = 700
 
 def setup():
-	global pwm
+    global pwm
     pwm = servo.PWM()
 
 def servo_test():

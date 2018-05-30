@@ -43,8 +43,9 @@ class PWM(object):
     RPI_REVISION_1_MODULE_A = ["0007", "0008", "0009",]
     RPI_REVISION_1_MODULE_BP = ["0010", "0013"]
     RPI_REVISION_1_MODULE_AP = ["0012"]
-    RPI_REVISION_2 = ["a01041", "a21041"]
-    RPI_REVISION_3 = ["a02082", "a22082"]
+    RPI_REVISION_2_MODULE_B  = ["a01041", "a21041"]
+    RPI_REVISION_3_MODULE_B  = ["a02082", "a22082"]
+    RPI_REVISION_3_MODULE_BP = ["a020d3"]
 
     _DEBUG = False
     _DEBUG_INFO = 'DEBUG "PCA9685.py":'
@@ -64,6 +65,8 @@ class PWM(object):
         elif pi_revision == '2 Module B':
             return 1
         elif pi_revision == '3 Module B':
+            return 1
+        elif pi_revision == '3 Module B+':
             return 1
 
     def _get_pi_revision(self):
@@ -85,10 +88,12 @@ class PWM(object):
                         return '1 Module B+'
                     elif line[11:-1] in self.RPI_REVISION_1_MODULE_AP:
                         return '1 Module A+'
-                    elif line[11:-1] in self.RPI_REVISION_2:
+                    elif line[11:-1] in self.RPI_REVISION_2_MODULE_B:
                         return '2 Module B'
-                    elif line[11:-1] in self.RPI_REVISION_3:
+                    elif line[11:-1] in self.RPI_REVISION_3_MODULE_B:
                         return '3 Module B'
+                    elif line[11:-1] in self.RPI_REVISION_3_MODULE_BP:
+                        return '3 Module B+'
                     else:
                         print "Error. Pi revision didn't recognize, module number: %s" % line[11:-1]
                         print 'Exiting...'

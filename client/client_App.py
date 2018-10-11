@@ -69,9 +69,9 @@ def xy_home(event):
 # and server.
 # =============================================================================
 def quit_fun(event):
-	top.quit()
 	tcpCliSock.send('stop')
 	tcpCliSock.close()
+	top.destroy()
 
 # =============================================================================
 # Create buttons

@@ -131,9 +131,9 @@ def coarsey_up(event):
 # and server.
 # =============================================================================
 def quit_fun(event):
-	top.quit()
 	tcpCliSock.send('motor_stop')
 	tcpCliSock.close()
+	top.destroy()
 
 # =============================================================================
 # Create buttons on motor

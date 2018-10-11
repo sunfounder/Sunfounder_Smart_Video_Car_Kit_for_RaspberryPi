@@ -21,47 +21,47 @@ tcpCliSock.connect(ADDR)                    # Connect with the server
 # car move forward.
 # ============================================================================= 
 def forward_fun(event):
-	print 'forward'
+	print ('forward')
 	tcpCliSock.send('forward')
 
 def backward_fun(event):
-	print 'backward'
+	print ('backward')
 	tcpCliSock.send('backward')
 
 def left_fun(event):
-	print 'left'
+	print ('left')
 	tcpCliSock.send('left')
 
 def right_fun(event):
-	print 'right'
+	print ('right')
 	tcpCliSock.send('right')
 
 def stop_fun(event):
-	print 'stop'
+	print ('stop')
 	tcpCliSock.send('stop')
 
 def home_fun(event):
-	print 'home'
+	print ('home')
 	tcpCliSock.send('home')
 
 def x_increase(event):
-	print 'x+'
+	print ('x+')
 	tcpCliSock.send('x+')
 
 def x_decrease(event):
-	print 'x-'
+	print ('x-')
 	tcpCliSock.send('x-')
 
 def y_increase(event):
-	print 'y+'
+	print ('y+')
 	tcpCliSock.send('y+')
 
 def y_decrease(event):
-	print 'y-'
+	print ('y-')
 	tcpCliSock.send('y-')
 
 def xy_home(event):
-	print 'xy_home'
+	print ('xy_home')
 	tcpCliSock.send('xy_home')
 
 # =============================================================================
@@ -156,11 +156,11 @@ top.bind('<KeyRelease-w>', stop_fun)
 spd = 50
 
 def changeSpeed(ev=None):
-	tmp = 'speed'
+	tmp = ('speed')
 	global spd
 	spd = speed.get()
 	data = tmp + str(spd)  # Change the integers into strings and combine them with the string 'speed'. 
-	print 'sendData = %s' % data
+	print ('sendData = %s' % data)
 	tcpCliSock.send(data)  # Send the speed data to the server(Raspberry Pi)
 
 label = Label(top, text='Speed:', fg='red')  # Create a label

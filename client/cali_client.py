@@ -46,9 +46,8 @@ def run(event):
 
 def confirm(event):
 	tcpCliSock.send('confirm'.encode(encoding='utf-8'))
-	
-	top.quit()
 	tcpCliSock.close()
+	top.destroy()
 
 #--------motor---------------------
 def left_reverse(event):

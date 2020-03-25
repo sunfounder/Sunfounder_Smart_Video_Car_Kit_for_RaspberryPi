@@ -106,7 +106,7 @@ class PWM(object):
         finally:
             f.close()
 
-    def __init__(self, bus_number=None, address=0x40):
+    def __init__(self, bus_number=1, address=0x40):
         '''Init the class with bus_number and address'''
         if self._DEBUG:
             print self._DEBUG_INFO, "Debug on"

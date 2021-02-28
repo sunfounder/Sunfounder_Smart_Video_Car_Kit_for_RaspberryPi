@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from Tkinter import *
-from socket import *      # Import necessary modules
+import tkinter as tk
+import socket as sock      # Import necessary modules
 
 ctrl_cmd = ['forward', 'backward', 'left', 'right', 'stop', 'read cpu_temp', 'home', 'distance', 'x+', 'x-', 'y+', 'y-', 'xy_home']
 
-top = Tk()   # Create a top window
+top = tk.Tk()   # Create a top window
 top.title('Sunfounder Raspberry Pi Smart Video Car')
 
-HOST = '192.168.0.147'    # Server(Raspberry Pi) IP address
+HOST = '192.168.0.25'    # Server(Raspberry Pi) IP address
 PORT = 21567
 BUFSIZ = 1024             # buffer size
 ADDR = (HOST, PORT)
 
-tcpCliSock = socket(AF_INET, SOCK_STREAM)   # Create a socket
+tcpCliSock = sock.socket(sock.AF_INET, sock.SOCK_STREAM)   # Create a socket
 tcpCliSock.connect(ADDR)                    # Connect with the server
 
 # =============================================================================
@@ -21,48 +21,48 @@ tcpCliSock.connect(ADDR)                    # Connect with the server
 # car move forward.
 # ============================================================================= 
 def forward_fun(event):
-	print 'forward'
-	tcpCliSock.send('forward')
+	print('forward')
+	tcpCliSock.send('forward'.encode())
 
 def backward_fun(event):
-	print 'backward'
-	tcpCliSock.send('backward')
+	print('backward')
+	tcpCliSock.send('backward'.encode())
 
 def left_fun(event):
-	print 'left'
-	tcpCliSock.send('left')
+	print('left')
+	tcpCliSock.send('left'.encode())
 
 def right_fun(event):
-	print 'right'
-	tcpCliSock.send('right')
+	print('right')
+	tcpCliSock.send('right'.encode())
 
 def stop_fun(event):
-	print 'stop'
-	tcpCliSock.send('stop')
+	print('stop')
+	tcpCliSock.send('stop'.encode())
 
 def home_fun(event):
-	print 'home'
-	tcpCliSock.send('home')
+	print('home')
+	tcpCliSock.send('home'.encode())
 
 def x_increase(event):
-	print 'x+'
-	tcpCliSock.send('x+')
+	print('x+')
+	tcpCliSock.send('x+'.encode())
 
 def x_decrease(event):
-	print 'x-'
-	tcpCliSock.send('x-')
+	print('x-')
+	tcpCliSock.send('x-'.encode())
 
 def y_increase(event):
-	print 'y+'
-	tcpCliSock.send('y+')
+	print('y+')
+	tcpCliSock.send('y+'.encode())
 
 def y_decrease(event):
-	print 'y-'
-	tcpCliSock.send('y-')
+	print('y-')
+	tcpCliSock.send('y-'.encode())
 
 def xy_home(event):
-	print 'xy_home'
-	tcpCliSock.send('xy_home')
+	print('xy_home')
+	tcpCliSock.send('xy_home'.encode())
 
 # =============================================================================
 # Exit the GUI program and close the network connection between the client 
@@ -70,18 +70,18 @@ def xy_home(event):
 # =============================================================================
 def quit_fun(event):
 	top.quit()
-	tcpCliSock.send('stop')
+	tcpCliSock.send('stop'.encode())
 	tcpCliSock.close()
 
 # =============================================================================
 # Create buttons
 # =============================================================================
-Btn0 = Button(top, width=5, text='Forward')
-Btn1 = Button(top, width=5, text='Backward')
-Btn2 = Button(top, width=5, text='Left')
-Btn3 = Button(top, width=5, text='Right')
-Btn4 = Button(top, width=5, text='Quit')
-Btn5 = Button(top, width=5, height=2, text='Home')
+Btn0 = tk.Button(top, width=5, text='Forward')
+Btn1 = tk.Button(top, width=5, text='Backward')
+Btn2 = tk.Button(top, width=5, text='Left')
+Btn3 = tk.Button(top, width=5, text='Right')
+Btn4 = tk.Button(top, width=5, text='Quit')
+Btn5 = tk.Button(top, width=5, height=2, text='Home')
 
 # =============================================================================
 # Buttons layout
@@ -110,11 +110,11 @@ Btn5.bind('<ButtonRelease-1>', home_fun)
 # =============================================================================
 # Create buttons
 # =============================================================================
-Btn07 = Button(top, width=5, text='X+', bg='red')
-Btn08 = Button(top, width=5, text='X-', bg='red')
-Btn09 = Button(top, width=5, text='Y-', bg='red')
-Btn10 = Button(top, width=5, text='Y+', bg='red')
-Btn11 = Button(top, width=5, height=2, text='HOME', bg='red')
+Btn07 = tk.Button(top, width=5, text='X+', bg='red')
+Btn08 = tk.Button(top, width=5, text='X-', bg='red')
+Btn09 = tk.Button(top, width=5, text='Y-', bg='red')
+Btn10 = tk.Button(top, width=5, text='Y+', bg='red')
+Btn11 = tk.Button(top, width=5, height=2, text='HOME', bg='red')
 
 # =============================================================================
 # Buttons layout
@@ -160,13 +160,14 @@ def changeSpeed(ev=None):
 	global spd
 	spd = speed.get()
 	data = tmp + str(spd)  # Change the integers into strings and combine them with the string 'speed'. 
-	print 'sendData = %s' % data
-	tcpCliSock.send(data)  # Send the speed data to the server(Raspberry Pi)
+	print('sendData = %s' % data)
+	tcpCliSock.send(data.encode())  # Send the speed data to the server(Raspberry Pi)
 
-label = Label(top, text='Speed:', fg='red')  # Create a label
+
+label = tk.Label(top, text='Speed:', fg='red')  # Create a label
 label.grid(row=6, column=0)                  # Label layout
 
-speed = Scale(top, from_=0, to=100, orient=HORIZONTAL, command=changeSpeed)  # Create a scale
+speed = tk.Scale(top, from_=0, to=100, orient=tk.HORIZONTAL, command=changeSpeed)  # Create a scale
 speed.set(50)
 speed.grid(row=6, column=1)
 
